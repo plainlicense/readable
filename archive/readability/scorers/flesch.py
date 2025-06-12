@@ -1,4 +1,4 @@
-from readability.exceptions import ReadabilityException
+from readable.exceptions import ReadabilityException
 
 
 class Result:

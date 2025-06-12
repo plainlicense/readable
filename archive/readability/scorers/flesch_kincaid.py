@@ -1,4 +1,4 @@
-from readability.exceptions import ReadabilityException
+from readable.exceptions import ReadabilityException
 
 
 class Result:
@@ -11,7 +11,7 @@ class Result:
             format(self.score, self.grade_level)
 
 
-class LinsearWrite:
+class FleschKincaid:
     def __init__(self, stats, min_words=100):
         self._stats = stats
         if stats.num_words < min_words:
@@ -25,13 +25,9 @@ class LinsearWrite:
         )
 
     def _score(self):
-        s = self._stats
-        num_easy_words = s.num_words - s.num_poly_syllable_words
-        num_hard_words = s.num_poly_syllable_words
-        inter_score = (num_easy_words + (num_hard_words * 3)) / s.num_sentences
-        if inter_score > 20:
-            return inter_score / 2
-        return (inter_score - 2) / 2
+        stats = self._stats
+        return (0.38 * stats.avg_words_per_sentence +
+                11.8 * stats.avg_syllables_per_word) - 15.59
 
     def _grade_level(self, score):
         return str(round(score))

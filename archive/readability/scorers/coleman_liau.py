@@ -1,4 +1,4 @@
-from readability.exceptions import ReadabilityException
+from readable.exceptions import ReadabilityException
 
 
 class Result:
@@ -11,7 +11,7 @@ class Result:
             format(self.score, self.grade_level)
 
 
-class FleschKincaid:
+class ColemanLiau:
     def __init__(self, stats, min_words=100):
         self._stats = stats
         if stats.num_words < min_words:
@@ -25,9 +25,12 @@ class FleschKincaid:
         )
 
     def _score(self):
-        stats = self._stats
-        return (0.38 * stats.avg_words_per_sentence +
-                11.8 * stats.avg_syllables_per_word) - 15.59
+        s = self._stats
+        scalar = s.num_words / 100
+        letters_per_100_words = s.num_letters / scalar
+        sentences_per_100_words = s.num_sentences / scalar
+        return 0.0588 * letters_per_100_words - \
+            0.296 * sentences_per_100_words - 15.8
 
     def _grade_level(self, score):
         return str(round(score))

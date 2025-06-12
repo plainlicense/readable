@@ -1,4 +1,4 @@
-from readability.exceptions import ReadabilityException
+from readable.exceptions import ReadabilityException
 
 
 class Result:
@@ -11,7 +11,7 @@ class Result:
             format(self.score, self.grade_level)
 
 
-class GunningFog:
+class LinsearWrite:
     def __init__(self, stats, min_words=100):
         self._stats = stats
         if stats.num_words < min_words:
@@ -26,17 +26,12 @@ class GunningFog:
 
     def _score(self):
         s = self._stats
-        word_per_sent = s.num_words / s.num_sentences
-        poly_syllables_per_word = s.num_gunning_complex / s.num_words
-        return 0.4 * (word_per_sent + 100 * poly_syllables_per_word)
+        num_easy_words = s.num_words - s.num_poly_syllable_words
+        num_hard_words = s.num_poly_syllable_words
+        inter_score = (num_easy_words + (num_hard_words * 3)) / s.num_sentences
+        if inter_score > 20:
+            return inter_score / 2
+        return (inter_score - 2) / 2
 
     def _grade_level(self, score):
-        rounded = round(score)
-        if rounded < 6:
-            return 'na'
-        elif rounded >= 6 and rounded <= 12:
-            return str(rounded)
-        elif rounded >= 13 and rounded <= 16:
-            return 'college'
-        else:
-            return 'college_graduate'
+        return str(round(score))

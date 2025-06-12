@@ -1,4 +1,4 @@
-from readability.exceptions import ReadabilityException
+from readable.exceptions import ReadabilityException
 
 
 class Result:
@@ -11,7 +11,7 @@ class Result:
             format(self.score, self.grade_level)
 
 
-class ColemanLiau:
+class GunningFog:
     def __init__(self, stats, min_words=100):
         self._stats = stats
         if stats.num_words < min_words:
@@ -26,11 +26,17 @@ class ColemanLiau:
 
     def _score(self):
         s = self._stats
-        scalar = s.num_words / 100
-        letters_per_100_words = s.num_letters / scalar
-        sentences_per_100_words = s.num_sentences / scalar
-        return 0.0588 * letters_per_100_words - \
-            0.296 * sentences_per_100_words - 15.8
+        word_per_sent = s.num_words / s.num_sentences
+        poly_syllables_per_word = s.num_gunning_complex / s.num_words
+        return 0.4 * (word_per_sent + 100 * poly_syllables_per_word)
 
     def _grade_level(self, score):
-        return str(round(score))
+        rounded = round(score)
+        if rounded < 6:
+            return 'na'
+        elif rounded >= 6 and rounded <= 12:
+            return str(rounded)
+        elif rounded >= 13 and rounded <= 16:
+            return 'college'
+        else:
+            return 'college_graduate'

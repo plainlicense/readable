@@ -1,5 +1,5 @@
 import unittest
-from readability import Readability
+from readable import Readability
 
 
 class ReadabilityTest(unittest.TestCase):
@@ -65,7 +65,7 @@ class ReadabilityTest(unittest.TestCase):
 
         #Test SMOG with 30 sentences
         r1 = readability.smog()
-        
+
         #Test SMOG with all sentences
         r2 = readability.smog(all_sentences=True)
 
