@@ -1,0 +1,36 @@
+"""Text tokenization utilities."""
+
+
+from nltk.tokenize import TweetTokenizer, sent_tokenize
+
+
+class Tokenizer:
+    """A class for tokenizing text into sentences and words."""
+
+    def __init__(self):
+        """Initialize the tokenizer."""
+        self._tweet_tokenizer = TweetTokenizer()
+
+    def tokenize_sentences(self, text: str) -> list[str]:
+        """
+        Tokenize text into sentences.
+
+        Args:
+            text: The text to tokenize.
+
+        Returns:
+            A list of sentences.
+        """
+        return sent_tokenize(text)
+
+    def tokenize_words(self, text: str) -> list[str]:
+        """
+        Tokenize text into words.
+
+        Args:
+            text: The text to tokenize.
+
+        Returns:
+            A list of words.
+        """
+        return self._tweet_tokenizer.tokenize(text)

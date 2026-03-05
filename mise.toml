@@ -1,6 +1,6 @@
 [tools]
-gitsign = "latest"
 "npm:all-contributors-cli" = "latest"
 ruff = "latest"
+ty = "latest"
 typos = "latest"
 uv = "latest"

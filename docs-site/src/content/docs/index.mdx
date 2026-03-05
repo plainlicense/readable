@@ -1,0 +1,110 @@
+---
+title: Readable
+description: Score text readability with nine proven formulas. Modern Python library with typed results and a clean API.
+template: splash
+hero:
+  tagline: Nine readability formulas. One clean API.
+  image:
+    file: ../../assets/images/logo_only_color_transp.svg
+  actions:
+    - text: Get Started
+      link: /readable/metrics/
+      icon: right-arrow
+    - text: Choose a Metric
+      link: /readable/choosing-a-metric/
+      icon: list-format
+    - text: GitHub
+      link: https://github.com/plainlicense/readable
+      icon: external
+      variant: minimal
+---
+
+import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
+
+## Installation
+
+```bash
+pip install readable
+```
+
+After installing, download the required NLTK data once:
+
+```bash
+python -c "import nltk; nltk.download('punkt_tab')"
+```
+
+## Quick Start
+
+Pass text to `Readability`, then call any metric method. Each method returns a typed result object.
+
+```python
+from readable import Readability
+
+text = """
+Plain language means writing that your audience can understand the first time
+they read it. Short sentences help. Common words help more. You do not need to
+simplify your ideas — just the way you express them. Jargon and long sentences
+slow people down and make them feel excluded. Simple writing is not dumbed-down
+writing. It is respectful writing. Federal agencies, healthcare providers, and
+legal teams use readability formulas to check whether documents reach their
+intended audience. Running a check takes seconds. Readable gives you nine
+proven formulas in one Python library with a consistent API.
+"""
+
+r = Readability(text)
+
+flesch = r.flesch()
+print(flesch.score)        # ~74.3
+print(flesch.ease)         # 'fairly_easy'
+print(flesch.grade_level)  # '7'
+
+fk = r.flesch_kincaid()
+print(fk.score)            # ~7.2
+print(fk.grade_level)      # '7'
+
+# All nine metrics use the same pattern
+r.ari()
+r.smog()
+r.gunning_fog()
+r.dale_chall()
+r.coleman_liau()
+r.linsear_write()
+r.spache()
+
+# Access raw text statistics
+print(r.stats.num_words)              # 107
+print(r.stats.avg_syllables_per_word) # 1.4
+```
+
+:::note[Minimum text length]
+Readable defaults to a minimum of 100 words. Passing shorter text raises a `ValueError`. You can lower the threshold with `Readability(text, min_words=50)`, but scores become less reliable on short texts. SMOG also requires at least 30 sentences.
+:::
+
+## What you get
+
+<CardGrid>
+  <Card title="Nine proven formulas" icon="list-format">
+    ARI, Coleman-Liau, Dale-Chall, Flesch, Flesch-Kincaid, Gunning Fog, Linsear Write, SMOG, and Spache. Each has its own page explaining what it measures, when to use it, and where it falls short.
+  </Card>
+  <Card title="Typed, structured results" icon="setting">
+    Every metric returns a frozen dataclass. Fields are documented. Results are comparable by `score`. No parsing strings or digging through raw dicts.
+  </Card>
+  <Card title="Text statistics included" icon="rocket">
+    `r.stats` gives you word count, sentence count, syllable count, polysyllabic word count, and more — computed once at construction and shared across all metric calls.
+  </Card>
+  <Card title="Extensible" icon="add-document">
+    Subclass `BaseMeasure` to add your own metric. It receives the same `StatSummary` the built-in metrics use and fits the same interface.
+  </Card>
+</CardGrid>
+
+<LinkCard
+  title="Which metric should I use?"
+  description="A plain-language guide to all nine formulas — what they measure, when to use them, and how their scores compare on the same text."
+  href="/readable/choosing-a-metric/"
+/>
+
+## Built for plain language work
+
+Readable is the scoring engine behind [Plain License](https://plainlicense.org/) tools, including the in-development [plainr](https://github.com/plainlicense/plainr) CLI. It is designed to run in CI pipelines, scripts, and anywhere Python runs.
+
+The library is a modernized fork of [py-readability-metrics](https://github.com/cdimascio/py-readability-metrics) by [Carmine DiMascio](https://github.com/cdimascio).
