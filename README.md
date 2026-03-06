@@ -4,17 +4,20 @@ SPDX-FileCopyrightText: 2026 PlainLicense
 SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 -->
 
-# 📗 Readable
+<p align="center">
+  <img src="docs-site/src/assets/images/readable_logo.svg" alt="Readable" width="120" />
+</p>
+
+# Readable
 [![MIT license](https://img.shields.io/badge/License-MIT-green.svg)](https://lbesson.mit-license.org/)
 
-Score the _readability_ of text using popular readability formulas and metrics including: [Flesch Kincaid Grade Level](#flesch-kincaid-grade-level), [Flesch Reading Ease](#flesch-reading-ease), [Gunning Fog Index](#gunning-fog), [Dale Chall Readability](#dale-chall-readability), [Automated Readability Index (ARI)](#automated-readability-index-ari), [Coleman Liau Index](#coleman-liau-index), [Linsear Write](#linsear-write), [SMOG](#smog), and [SPACHE](#spache). 📗
+Score the _readability_ of text using popular readability formulas and metrics including: [Flesch Kincaid Grade Level](#flesch-kincaid-grade-level), [Flesch Reading Ease](#flesch-reading-ease), [Gunning Fog Index](#gunning-fog), [Dale Chall Readability](#dale-chall-readability), [Automated Readability Index (ARI)](#automated-readability-index-ari), [Coleman Liau Index](#coleman-liau-index), [Linsear Write](#linsear-write), [SMOG](#smog), and [SPACHE](#spache).
 
 [![GitHub stars](https://img.shields.io/github/stars/plainlicense/readable.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/plainlicense/readable/stargazers/)
 
 ## Prerequisites
 
 - Python 3.12 or higher
-- NLTK data download required on first use: `python -c "import nltk; nltk.download('punkt_tab')"`
 
 ## Installation
 
