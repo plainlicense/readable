@@ -16,7 +16,7 @@ import starlightScrollToTop from 'starlight-scroll-to-top';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://docs.plainlicense.org',
-	base: '/readable',
+	base: '/readscore',
 	adapter: cloudflareAdapter({
 		imageService: 'compile',
 		// @ts-ignore
@@ -24,14 +24,14 @@ export default defineConfig({
 	}),
 	integrations: [
 		starlight({
-			title: 'Readable',
+			title: 'readscore',
 			logo: {
 				src: './src/assets/images/logo_only_color_transp.svg',
 				alt: 'PlainLicense Logo'
 			},
 			description: 'A Python library for calculating readability metrics.',
 			social: [
-				{ icon: 'github', label: 'GitHub', href: 'https://github.com/plainlicense/readable' }
+				{ icon: 'github', label: 'GitHub', href: 'https://github.com/plainlicense/readscore' }
 			],
 			customCss: [
 				'./src/styles/custom.css',
@@ -41,7 +41,7 @@ export default defineConfig({
 					label: 'Getting Started',
 					items: [
 						{ label: 'Introduction', slug: 'index' },
-						{ label: 'Extending Readable', slug: 'guides/extending' },
+						{ label: 'Extending readscore', slug: 'guides/extending' },
 					],
 				},
 				{
@@ -71,8 +71,8 @@ export default defineConfig({
 			// We need to configure starlight-tags with a tags.yml.
 			//starlightTags(), 
 			starlightLlmsText({
-				projectName: "Readable by PlainLicense",
-				description: `Readable is a Python library for calculating readability metrics. It provides a simple and efficient way to assess the readability of text using various established metrics.
+				projectName: "readscore by PlainLicense",
+				description: `readscore is a Python library for calculating readability metrics. It provides a simple and efficient way to assess the readability of text using various established metrics.
 				`,
 				promote: ["index", "metrics/index", "choosing-a-metric"],
 				minify: {
@@ -91,8 +91,8 @@ export default defineConfig({
 			}
 		}),
 		favicons({
-			name: 'Readable by PlainLicense',
-			short_name: 'Readable',
+			name: 'readscore by PlainLicense',
+			short_name: 'readscore',
 		})
 	],
 	prefetch: {

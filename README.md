@@ -5,15 +5,15 @@ SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 -->
 
 <p align="center">
-  <img src="docs-site/src/assets/images/readable_logo.svg" alt="Readable" width="120" />
+  <img src="docs-site/src/assets/images/readscore_logo.svg" alt="readscore" width="120" />
 </p>
 
-# Readable
+# readscore
 [![MIT license](https://img.shields.io/badge/License-MIT-green.svg)](https://lbesson.mit-license.org/)
 
 Score the _readability_ of text using popular readability formulas and metrics including: [Flesch Kincaid Grade Level](#flesch-kincaid-grade-level), [Flesch Reading Ease](#flesch-reading-ease), [Gunning Fog Index](#gunning-fog), [Dale Chall Readability](#dale-chall-readability), [Automated Readability Index (ARI)](#automated-readability-index-ari), [Coleman Liau Index](#coleman-liau-index), [Linsear Write](#linsear-write), [SMOG](#smog), and [SPACHE](#spache).
 
-[![GitHub stars](https://img.shields.io/github/stars/plainlicense/readable.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/plainlicense/readable/stargazers/)
+[![GitHub stars](https://img.shields.io/github/stars/plainlicense/readscore.svg?style=social&label=Star&maxAge=2592000)](https://GitHub.com/plainlicense/readscore/stargazers/)
 
 ## Prerequisites
 
@@ -22,13 +22,13 @@ Score the _readability_ of text using popular readability formulas and metrics i
 ## Installation
 
 ```bash
-pip install readable
+pip install readscore
 ```
 
 ## Quick Start
 
 ```python
-from readable import Readability
+from readscore import Readability
 
 text = """
 In linguistics, the Gunning fog index is a readability test for English writing. 
@@ -65,11 +65,11 @@ print(stats)
 print(r.stats)
 ```
 
-For score interpretation, metric selection, and full API docs, see **[docs.plainlicense.org/readable](https://docs.plainlicense.org/readable/)**.
+For score interpretation, metric selection, and full API docs, see **[docs.plainlicense.org/readscore](https://docs.plainlicense.org/readscore/)**.
 
 ## About
 
-Readable is a fork of the excellent [py-readability-metrics](https://github.com/cdimascio/py-readability-metrics) library by [Carmine DiMascio (@cdimascio)](https://github.com/cdimascio). We wanted to build on the great work that Carmine did, and add some additional features and metrics as an engine for future [Plain License](https://plainlicense.org/) projects, like our in-development CLI tool, [**plainr**](https://github.com/plainlicense/plainr) and similar plain language focused CI/CD tools. We also wanted to make some major breaking changes to the API and add robust typing support, so we decided to fork the project and start fresh.
+readscore is a fork of the excellent [py-readability-metrics](https://github.com/cdimascio/py-readability-metrics) library by [Carmine DiMascio (@cdimascio)](https://github.com/cdimascio). We wanted to build on the great work that Carmine did, and add some additional features and metrics as an engine for future [Plain License](https://plainlicense.org/) projects, like our in-development CLI tool, [**plainr**](https://github.com/plainlicense/plainr) and similar plain language focused CI/CD tools. We also wanted to make some major breaking changes to the API and add robust typing support, so we decided to fork the project and start fresh.
 
 ## Supported Metrics
 
@@ -85,5 +85,5 @@ Readable is a fork of the excellent [py-readability-metrics](https://github.com/
 
 ## Acknowledgements
 
-Readable is a fork of [py-readability-metrics](https://github.com/cdimascio/py-readability-metrics)
+readscore is a fork of [py-readability-metrics](https://github.com/cdimascio/py-readability-metrics)
 by [Carmine DiMascio](https://github.com/cdimascio). We are grateful for that foundation.

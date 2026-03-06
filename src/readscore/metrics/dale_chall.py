@@ -6,9 +6,9 @@
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import DALE_CHALL as _DALE_CHALL_ABOUT
-from readable.types._interfaces import BaseMeasure
-from readable.types.results import DaleChallResult
+from readscore.constants.about_metric import DALE_CHALL as _DALE_CHALL_ABOUT
+from readscore.types._interfaces import BaseMeasure
+from readscore.types.results import DaleChallResult
 
 
 # (upper_bound_exclusive, grade_strings, integer_grade)

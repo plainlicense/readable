@@ -6,7 +6,7 @@ SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 
 # Research Report: Flesch Reading Ease, Flesch-Kincaid Grade Level, and SMOG Index
 
-**Prepared for:** Readable library documentation project
+**Prepared for:** readscore library documentation project
 **Date:** 2026-03-05
 **Status:** Research draft — not the final user-facing documentation
 **Scope:** History, formula mechanics, strengths, weaknesses, use cases, and comparative analysis
@@ -27,7 +27,7 @@ SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 
 ### 1.1 Background and History
 
-Rudolf Flesch (1911–1986) was an Austrian-born lawyer who fled Nazi persecution in 1938 and built his second career in the United States as a writing consultant, readability researcher, and Plain English advocate. After arriving as a refugee with a Viennese law degree that was not recognized in the US, he worked in a book manufacturing shipping department before earning scholarships to Columbia University. He received a BA in library science (1940), an MA in adult education (1942), and a PhD in educational research (1943), where his dissertation was titled "Marks of a Readable Style."
+Rudolf Flesch (1911–1986) was an Austrian-born lawyer who fled Nazi persecution in 1938 and built his second career in the United States as a writing consultant, readability researcher, and Plain English advocate. After arriving as a refugee with a Viennese law degree that was not recognized in the US, he worked in a book manufacturing shipping department before earning scholarships to Columbia University. He received a BA in library science (1940), an MA in adult education (1942), and a PhD in educational research (1943), where his dissertation was titled "Marks of a readscore Style."
 
 Flesch's 1943 dissertation introduced his first readability formula, which included affixes (prefixes and suffixes per 100 words) and "personal references" (personal pronouns and named individuals). Publishers discovered the formula could increase readership by 40–60 percent (DuBay, 2004). This brought Flesch considerable attention as a communications consultant.
 
@@ -222,7 +222,7 @@ G. Harry McLaughlin was an Associate Professor of Communications in the School o
 
 The name "SMOG" was chosen deliberately on multiple levels. It is an acronym for Simple Measure of Gobbledygook — directly targeting the kind of dense, pretentious, or bureaucratic language the formula was designed to identify. McLaughlin also chose it as a homage to Robert Gunning's FOG Index (Gunning Fog), which the formula was designed to improve upon. There may be a personal element as well: McLaughlin was British, and London's catastrophic "Great Smog" of 1952 was still in living memory. The use of weather metaphors (fog, smog) to describe unclear writing had a pointed self-awareness.
 
-When McLaughlin first circulated an earlier version of the paper, a statistician who reviewed it assumed it was a joke. The formula was, in McLaughlin's own words, "laughably simple" — he meant this as a compliment, arguing that a formula's value should not depend on its complexity (readable.com/readability/smog-index).
+When McLaughlin first circulated an earlier version of the paper, a statistician who reviewed it assumed it was a joke. The formula was, in McLaughlin's own words, "laughably simple" — he meant this as a compliment, arguing that a formula's value should not depend on its complexity (readscore.com/readability/smog-index).
 
 **The mathematical insight behind SMOG:** McLaughlin recognized that in any fixed number of sentences, the count of polysyllabic words simultaneously captures both sentence length and word complexity, because:
 - For any average number of syllables per word, a longer sentence contains more words and thus more chances for a polysyllabic word to appear.
@@ -354,7 +354,7 @@ The fundamental difference between SMOG and the Flesch family is not just formul
 | Software availability | Very high (Word, many tools) | Moderate (specialized tools) |
 | Minimum text length | ~100 words for stability | 30 sentences (hard practical minimum) |
 
-**Which to choose:** The decision hinges on what "readable" means for your use case.
+**Which to choose:** The decision hinges on what "readscore" means for your use case.
 
 - If you're writing general-purpose content for broad audiences (news, blogs, business writing) and want a quick check that it's not impenetrably complex, Flesch RE or FK Grade Level is appropriate. The 75% comprehension benchmark is reasonable for general reading where full understanding is not critical.
 
@@ -388,7 +388,7 @@ All three formulas inherit a set of structural limitations that no refinement of
 
 **Proxy reliability.** As Klare's (1976) review showed, even when positive correlations with comprehension are found, the effect sizes are often modest, and negative results may be underreported. The formulas are useful screens, not precise measurements.
 
-These limitations do not make the formulas useless. They make them what they actually are: imperfect but computationally tractable proxy measures useful for detecting gross readability problems, establishing approximate compliance with readability standards, and guiding revision. They should never be the sole determinant of whether content is "readable" — usability testing with actual readers is always more informative (Redish, 2000; UXMatters, 2019).
+These limitations do not make the formulas useless. They make them what they actually are: imperfect but computationally tractable proxy measures useful for detecting gross readability problems, establishing approximate compliance with readability standards, and guiding revision. They should never be the sole determinant of whether content is "readscore" — usability testing with actual readers is always more informative (Redish, 2000; UXMatters, 2019).
 
 ---
 
@@ -438,7 +438,7 @@ PMC10027808 — CommonLit CLEAR corpus study; critique of norming limitations of
 
 Armbruster, B. B., Osborn, J. H., & Davison, A. L. (1985). Readability formulas may be dangerous to your textbooks. *Educational Leadership, 42*(7), 18–20.
 
-Davison, A., & Kantor, R. N. (1982). On the failure of readability formulas to define readable texts: A case from adaptations. *Reading Research Quarterly, 17*(2), 187–209.
+Davison, A., & Kantor, R. N. (1982). On the failure of readability formulas to define readscore texts: A case from adaptations. *Reading Research Quarterly, 17*(2), 187–209.
 
 ACL Anthology (2021). Flesch-Kincaid is not a text simplification evaluation metric. In *Proceedings of the 1st Workshop on Natural Language Generation, Evaluation, and Metrics (GEM 2021)*. https://aclanthology.org/2021.gem-1.1.pdf
 
@@ -466,4 +466,4 @@ The following items in this report involve uncertainty or contested findings in 
 
 ---
 
-*Research compiled for internal use by the Readable library project. For questions about this report, see the project's claudedocs directory.*
+*Research compiled for internal use by the readscore library project. For questions about this report, see the project's claudedocs directory.*

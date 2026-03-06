@@ -318,7 +318,7 @@ wheels = [
 ]
 
 [[package]]
-name = "readable"
+name = "readscore"
 source = { editable = "." }
 dependencies = [
     { name = "lateimport" },

@@ -6,9 +6,9 @@
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import SPACHE as _SPACHE_ABOUT
-from readable.types._interfaces import BaseMeasure
-from readable.types.results import SpacheResult
+from readscore.constants.about_metric import SPACHE as _SPACHE_ABOUT
+from readscore.types._interfaces import BaseMeasure
+from readscore.types.results import SpacheResult
 
 
 @dataclass(frozen=True, slots=True)

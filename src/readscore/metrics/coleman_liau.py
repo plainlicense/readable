@@ -6,9 +6,9 @@
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import COLEMAN_LIAU as _COLEMAN_LIAU_ABOUT
-from readable.types._interfaces import BaseMeasure
-from readable.types.results import ColemanLiauResult
+from readscore.constants.about_metric import COLEMAN_LIAU as _COLEMAN_LIAU_ABOUT
+from readscore.types._interfaces import BaseMeasure
+from readscore.types.results import ColemanLiauResult
 
 
 @dataclass(frozen=True, slots=True)

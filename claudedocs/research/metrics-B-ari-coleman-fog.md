@@ -6,7 +6,7 @@ SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 
 # Research Report: ARI, Coleman-Liau, and Gunning Fog Readability Metrics
 
-**Prepared for**: Readable library documentation
+**Prepared for**: readscore library documentation
 **Date**: 2026-03-05
 **Scope**: Automated Readability Index (ARI), Coleman-Liau Index (CLI), and Gunning Fog Index
 
@@ -60,7 +60,7 @@ In 1975, Kincaid, Fishburne, Rogers, and Chissom recalculated ARI (along with th
 
 ### Formula Explained
 
-The Readable library implements:
+The readscore library implements:
 
 ```
 ARI = 4.71 × (characters / words) + 0.5 × (words / sentences) - 21.43
@@ -160,7 +160,7 @@ Coleman and Liau also made a theoretical argument alongside the practical one, q
 
 ### Formula Explained
 
-The Readable library implements:
+The readscore library implements:
 
 ```
 CLI = 0.0588 × L - 0.296 × S - 15.8
@@ -257,7 +257,7 @@ The name "Fog Index" reflects Gunning's core metaphor: unnecessary complexity cr
 
 ### Formula Explained
 
-The Readable library implements:
+The readscore library implements:
 
 ```
 Gunning Fog = 0.4 × ((words / sentences) + 100 × (complex_words / words))
@@ -286,7 +286,7 @@ This is where Gunning Fog introduces the most implementation variance. The defin
 
 - **Modern NLP implementations**: Commonly omit the proper noun and compound word exclusions because they require part-of-speech tagging or capitalization heuristics that add complexity. An implementation that counts *all* three-syllable-or-more words without exclusions will produce systematically higher Fog scores than the original formula intended.
 
-The Readable implementation should be checked against which exclusion rules it applies, as the score will differ materially depending on this choice.
+The readscore implementation should be checked against which exclusion rules it applies, as the score will differ materially depending on this choice.
 
 **Output interpretation:**
 
@@ -301,7 +301,7 @@ The Readable implementation should be checked against which exclusion rules it a
 | 13-16     | College         | College-level academic texts |
 | 17+       | Post-graduate   | Graduate academic, professional journals |
 
-Gunning's empirical benchmarks: Bible, Shakespeare, and Mark Twain score approximately 6. Time and the Wall Street Journal average approximately 11. A score above 12 is considered too complex for most readers. Scores above 17 indicate graduate-level material. The formula's output range is nominally 0-20+, but scores above 20 are considered "barely readable" by most users.
+Gunning's empirical benchmarks: Bible, Shakespeare, and Mark Twain score approximately 6. Time and the Wall Street Journal average approximately 11. A score above 12 is considered too complex for most readers. Scores above 17 indicate graduate-level material. The formula's output range is nominally 0-20+, but scores above 20 are considered "barely readscore" by most users.
 
 ### Strengths
 
@@ -335,7 +335,7 @@ This is documented in the Gunning Fog Wikipedia article and explicitly noted in 
 
 **Compound sentence counting variant**: Some sources note that Gunning's original specification treated sentences connected by semicolons, colons, or commas (when linking complete thoughts) as compound sentences to be counted as two sentences. This variant, if applied, reduces Average Sentence Length and therefore lowers the Fog score. Most modern implementations count by punctuation marks (periods, question marks, exclamation marks) only, ignoring this compound-sentence rule.
 
-**Context and reader familiarity ignored**: A document can use simple vocabulary and short sentences while discussing a highly specialized topic that requires significant domain knowledge. A pharmaceutical leaflet written at an 8th-grade Fog score is not actually readable by an 8th-grader if they don't know what the underlying medical condition is.
+**Context and reader familiarity ignored**: A document can use simple vocabulary and short sentences while discussing a highly specialized topic that requires significant domain knowledge. A pharmaceutical leaflet written at an 8th-grade Fog score is not actually readscore by an 8th-grader if they don't know what the underlying medical condition is.
 
 **Gaming the formula is straightforward and counterproductive**: Writers who know the formula can produce low Fog scores by artificially chopping sentences into fragments, which Gunning himself warned against: "Don't write to make a good fog index score. That will make you write short, choppy sentences. Like these." (Gunning-Mueller Clear Writing Institute, as cited by MU Extension, 1973/2006).
 
@@ -365,7 +365,7 @@ This is documented in the Gunning Fog Wikipedia article and explicitly noted in 
 
 ### ARI vs. Coleman-Liau: Both Character-Based
 
-ARI and Coleman-Liau are the two character-based readability metrics in the Readable library. They share the fundamental insight that letter count is a tractable machine-computable proxy for word complexity, and both were developed specifically for mechanical/computational scoring. Despite these similarities, they differ in important ways:
+ARI and Coleman-Liau are the two character-based readability metrics in the readscore library. They share the fundamental insight that letter count is a tractable machine-computable proxy for word complexity, and both were developed specifically for mechanical/computational scoring. Despite these similarities, they differ in important ways:
 
 **Different character definitions:**
 - ARI counts letters *and digits*. A number like "2024" contributes 4 characters.
@@ -503,8 +503,8 @@ Klare, George R. (1974-76). Assessing readability. *Reading Research Quarterly*,
 
 2. **Coleman-Liau's claim that "word length in letters is a better predictor than word length in syllables"**: This was Coleman and Liau's empirical finding, but Wikipedia notes "opinion varies on its accuracy as compared to the syllable/word and complex words indices." No definitive meta-analysis settling this claim was found. The claim is plausible but not established as a consensus finding.
 
-3. **Gunning Fog's "complex word" exclusions in modern implementations**: The proper noun exclusion requires either knowing that a word is capitalized (easy to implement but imprecise — capitals also appear at sentence starts) or full named-entity recognition (expensive). Many NLP implementations skip proper noun exclusions. This means Fog scores computed by different tools on proper-noun-heavy text may be incomparable. The compound word exclusion is even more difficult to implement consistently and is often omitted. Readable's implementation should document which exclusions it applies.
+3. **Gunning Fog's "complex word" exclusions in modern implementations**: The proper noun exclusion requires either knowing that a word is capitalized (easy to implement but imprecise — capitals also appear at sentence starts) or full named-entity recognition (expensive). Many NLP implementations skip proper noun exclusions. This means Fog scores computed by different tools on proper-noun-heavy text may be incomparable. The compound word exclusion is even more difficult to implement consistently and is often omitted. readscore's implementation should document which exclusions it applies.
 
-4. **The "recalculated" vs. "original" ARI question**: Kincaid et al. (1975) derived updated formulas specifically for Navy personnel reading Navy training materials. These "recalculated" formulas have slightly different coefficients from the original Smith-Senter formula. The Readable implementation should clarify which formula version it uses, as this affects whether claims about military documentation validation are accurate.
+4. **The "recalculated" vs. "original" ARI question**: Kincaid et al. (1975) derived updated formulas specifically for Navy personnel reading Navy training materials. These "recalculated" formulas have slightly different coefficients from the original Smith-Senter formula. The readscore implementation should clarify which formula version it uses, as this affects whether claims about military documentation validation are accurate.
 
 5. **Coleman-Liau's counting of punctuation**: Some implementations count punctuation as characters; others count only alphanumeric characters. Coleman and Liau's (1975) paper specified "letters or digits" per the Wikipedia-cited worked example, but other sources describe the formula as counting all non-space characters. This ambiguity exists in the literature and affects scores on punctuation-heavy text.

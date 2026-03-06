@@ -2,11 +2,11 @@
 #
 # SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 
-"""Unit tests for the readable library."""
+"""Unit tests for the readscore library."""
 
 import pytest
 
-from readable import Readability
+from readscore import Readability
 
 
 class TestReadability:

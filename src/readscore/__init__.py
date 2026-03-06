@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: LicenseRef-PlainMIT or MIT
 
-"""The readable library for modern readability scoring."""
+"""The readscore library for modern readability scoring."""
 
 from __future__ import annotations
 
@@ -18,24 +18,24 @@ from lateimport import create_late_getattr
 
 
 if TYPE_CHECKING:
-    from readable.metrics.ari import ARI
-    from readable.metrics.coleman_liau import ColemanLiau
-    from readable.metrics.dale_chall import DaleChall
-    from readable.metrics.flesch import Flesch
-    from readable.metrics.flesch_kincaid import FleschKincaid
-    from readable.metrics.gunning_fog import GunningFog
-    from readable.metrics.linsear_write import LinsearWrite
-    from readable.metrics.smog import Smog
-    from readable.metrics.spache import Spache
-    from readable.readability import Readability
-    from readable.resources.loader import ResourceLoader
-    from readable.resources.stemmer import Stemmer
-    from readable.text.analyzer import TextAnalyzer
-    from readable.text.statistics import StatSummary
-    from readable.text.tokenizer import Tokenizer
-    from readable.types._interfaces import BaseMeasure, BaseResult, BaseStatSummary
-    from readable.types.enums import Metric, ReadabilityMetric
-    from readable.types.results import (
+    from readscore.metrics.ari import ARI
+    from readscore.metrics.coleman_liau import ColemanLiau
+    from readscore.metrics.dale_chall import DaleChall
+    from readscore.metrics.flesch import Flesch
+    from readscore.metrics.flesch_kincaid import FleschKincaid
+    from readscore.metrics.gunning_fog import GunningFog
+    from readscore.metrics.linsear_write import LinsearWrite
+    from readscore.metrics.smog import Smog
+    from readscore.metrics.spache import Spache
+    from readscore.readability import Readability
+    from readscore.resources.loader import ResourceLoader
+    from readscore.resources.stemmer import Stemmer
+    from readscore.text.analyzer import TextAnalyzer
+    from readscore.text.statistics import StatSummary
+    from readscore.text.tokenizer import Tokenizer
+    from readscore.types._interfaces import BaseMeasure, BaseResult, BaseStatSummary
+    from readscore.types.enums import Metric, ReadabilityMetric
+    from readscore.types.results import (
         ARIResult,
         ColemanLiauResult,
         DaleChallResult,

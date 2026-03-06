@@ -6,9 +6,9 @@
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import LINSEAR_WRITE as _LINSEAR_WRITE_ABOUT
-from readable.types._interfaces import BaseMeasure
-from readable.types.results import LinsearWriteResult
+from readscore.constants.about_metric import LINSEAR_WRITE as _LINSEAR_WRITE_ABOUT
+from readscore.types._interfaces import BaseMeasure
+from readscore.types.results import LinsearWriteResult
 
 
 @dataclass(frozen=True, slots=True)

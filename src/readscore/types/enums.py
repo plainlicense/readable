@@ -11,34 +11,34 @@ import platform
 from dataclasses import FrozenInstanceError, dataclass
 from enum import Enum
 from types import DynamicClassAttribute
-from typing import TYPE_CHECKING, Any, Self, cast
+from typing import TYPE_CHECKING, Any, Self
 
 from lateimport import LateImport, lateimport
 
-from readable.constants.about_metric import ARI as _ARI_ABOUT
-from readable.constants.about_metric import COLEMAN_LIAU as _COLEMAN_LIAU_ABOUT
-from readable.constants.about_metric import DALE_CHALL as _DALE_CHALL_ABOUT
-from readable.constants.about_metric import FLESCH as _FLESCH_ABOUT
-from readable.constants.about_metric import FLESCH_KINCAID as _FLESCH_KINCAID_ABOUT
-from readable.constants.about_metric import GUNNING_FOG as _GUNNING_FOG_ABOUT
-from readable.constants.about_metric import LINSEAR_WRITE as _LINSEAR_WRITE_ABOUT
-from readable.constants.about_metric import SMOG as _SMOG_ABOUT
-from readable.constants.about_metric import SPACHE as _SPACHE_ABOUT
+from readscore.constants.about_metric import ARI as _ARI_ABOUT
+from readscore.constants.about_metric import COLEMAN_LIAU as _COLEMAN_LIAU_ABOUT
+from readscore.constants.about_metric import DALE_CHALL as _DALE_CHALL_ABOUT
+from readscore.constants.about_metric import FLESCH as _FLESCH_ABOUT
+from readscore.constants.about_metric import FLESCH_KINCAID as _FLESCH_KINCAID_ABOUT
+from readscore.constants.about_metric import GUNNING_FOG as _GUNNING_FOG_ABOUT
+from readscore.constants.about_metric import LINSEAR_WRITE as _LINSEAR_WRITE_ABOUT
+from readscore.constants.about_metric import SMOG as _SMOG_ABOUT
+from readscore.constants.about_metric import SPACHE as _SPACHE_ABOUT
 
 
 if TYPE_CHECKING:
-    from readable.types._interfaces import BaseMeasure
+    from readscore.types._interfaces import BaseMeasure
 
 _classes: dict[str, LateImport | type[BaseMeasure]] = {
-    "ARI": lateimport("readable.metrics.ari", "ARI"),
-    "COLEMAN_LIAU": lateimport("readable.metrics.coleman_liau", "ColemanLiau"),
-    "DALE_CHALL": lateimport("readable.metrics.dale_chall", "DaleChall"),
-    "FLESCH": lateimport("readable.metrics.flesch", "Flesch"),
-    "FLESCH_KINCAID": lateimport("readable.metrics.flesch_kincaid", "FleschKincaid"),
-    "GUNNING_FOG": lateimport("readable.metrics.gunning_fog", "GunningFog"),
-    "LINSEAR_WRITE": lateimport("readable.metrics.linsear_write", "LinsearWrite"),
-    "SMOG": lateimport("readable.metrics.smog", "Smog"),
-    "SPACHE": lateimport("readable.metrics.spache", "Spache"),
+    "ARI": lateimport("readscore.metrics.ari", "ARI"),
+    "COLEMAN_LIAU": lateimport("readscore.metrics.coleman_liau", "ColemanLiau"),
+    "DALE_CHALL": lateimport("readscore.metrics.dale_chall", "DaleChall"),
+    "FLESCH": lateimport("readscore.metrics.flesch", "Flesch"),
+    "FLESCH_KINCAID": lateimport("readscore.metrics.flesch_kincaid", "FleschKincaid"),
+    "GUNNING_FOG": lateimport("readscore.metrics.gunning_fog", "GunningFog"),
+    "LINSEAR_WRITE": lateimport("readscore.metrics.linsear_write", "LinsearWrite"),
+    "SMOG": lateimport("readscore.metrics.smog", "Smog"),
+    "SPACHE": lateimport("readscore.metrics.spache", "Spache"),
 }
 
 

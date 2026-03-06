@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: LicenseRef-PlainMIT or MIT
 
-"""Resource management for readability metrics."""
+"""Text analysis and processing utilities."""
 
 from __future__ import annotations
 
@@ -18,17 +18,21 @@ from lateimport import create_late_getattr
 
 
 if TYPE_CHECKING:
-    from readable.resources.loader import ResourceLoader
-    from readable.resources.stemmer import Stemmer
+    from readscore.text.analyzer import TextAnalyzer
+    from readscore.text.statistics import StatSummary
+    from readscore.text.syllables import count_syllables
+    from readscore.text.tokenizer import Tokenizer
 
 _dynamic_imports: MappingProxyType[str, tuple[str, str]] = MappingProxyType({
-    "ResourceLoader": (__spec__.parent, "loader"),
-    "Stemmer": (__spec__.parent, "stemmer"),
+    "StatSummary": (__spec__.parent, "statistics"),
+    "TextAnalyzer": (__spec__.parent, "analyzer"),
+    "Tokenizer": (__spec__.parent, "tokenizer"),
+    "count_syllables": (__spec__.parent, "syllables"),
 })
 
 __getattr__ = create_late_getattr(_dynamic_imports, globals(), __name__)
 
-__all__ = ("ResourceLoader", "Stemmer")
+__all__ = ("StatSummary", "TextAnalyzer", "Tokenizer", "count_syllables")
 
 
 def __dir__() -> list[str]:

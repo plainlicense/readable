@@ -19,7 +19,7 @@
     "svgo": "^4.0.1",
     "typescript": "^5.9.3"
   },
-  "name": "readable-docs",
+  "name": "readscore-docs",
   "scripts": {
     "astro": "bunx astro",
     "build": "bunx astro build",

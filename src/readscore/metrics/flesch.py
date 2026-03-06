@@ -6,9 +6,9 @@
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import FLESCH as _FLESCH_ABOUT
-from readable.types._interfaces import BaseMeasure
-from readable.types.results import FleschResult
+from readscore.constants.about_metric import FLESCH as _FLESCH_ABOUT
+from readscore.types._interfaces import BaseMeasure
+from readscore.types.results import FleschResult
 
 
 # (lower_bound_inclusive, ease_str, grade_strings, integer_grade) — sorted descending

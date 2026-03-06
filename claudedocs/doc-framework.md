@@ -4,9 +4,9 @@ SPDX-FileCopyrightText: 2026 PlainLicense
 SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 -->
 
-# Documentation Framework: Readable Metrics
+# Documentation Framework: readscore Metrics
 
-**Purpose**: This document defines how to write metric documentation for the Readable library. It is a working guide, not published documentation. Review and adjust this framework before writing the actual metric pages.
+**Purpose**: This document defines how to write metric documentation for the readscore library. It is a working guide, not published documentation. Review and adjust this framework before writing the actual metric pages.
 
 **Date**: 2026-03-05
 **Status**: Draft for review
@@ -207,7 +207,7 @@ to `Readability()`, but scores from short texts are less reliable.
 ## Example
 
 ```python
-from readable import Readability
+from readscore import Readability
 
 text = """
 Plain language means writing that your audience can understand the first time
@@ -396,7 +396,7 @@ who had been involved in newspaper and textbook publishing.
 
 r = Readability(text)
 
-# Results (run with readable 0.x.x):
+# Results (run with readscore 0.x.x):
 # r.flesch().score       = 52.4  -> "fairly_difficult" -> grade 10-12
 # r.flesch_kincaid().score = 11.8 -> grade 12
 # r.gunning_fog().score  = 13.2  -> college
@@ -493,7 +493,7 @@ This is not useful. "Designed to gauge the understandability of a text" describe
 
 ### Proposed Role
 
-The `about` property serves one specific purpose: returning a brief, machine-readable description for display in tool output, CLI interfaces, and logging. It is not documentation. It should not attempt to be.
+The `about` property serves one specific purpose: returning a brief, machine-readscore description for display in tool output, CLI interfaces, and logging. It is not documentation. It should not attempt to be.
 
 Given that role, the right length is two to three sentences. The content should:
 
@@ -569,7 +569,7 @@ Use these names consistently across all docs:
 | The Python class | `Readability` |
 | The result object | "result" |
 | Grade levels | "US grade level" (first use on a page); "grade level" (after that) |
-| The library | "Readable" |
+| The library | "readscore" |
 | K-12 grade | Write it as "grade 8" not "8th grade" (avoids ordinal abbreviation questions) |
 
 Do not use "aforementioned," "utilize," "leverage" (as a verb), "seamless," "robust," or "powerful" anywhere in the docs.
@@ -593,7 +593,7 @@ This does not run and teaches nothing.
 
 Example of good practice:
 ```python
-from readable import Readability
+from readscore import Readability
 
 text = """
 The city council approved the new zoning plan after two hours of public comment.
@@ -710,27 +710,27 @@ These are issues the writer needs to know before drafting each doc. They are not
 ## Appendix: Files Referenced in This Document
 
 Source files examined during audit:
-- `/home/knitli/readable/README.md`
-- `/home/knitli/readable/docs/metrics.md`
-- `/home/knitli/readable/docs/ari.md`
-- `/home/knitli/readable/docs/extending.md`
-- `/home/knitli/readable/readable/readability.py`
-- `/home/knitli/readable/readable/types/results.py`
-- `/home/knitli/readable/readable/metrics/ari.py`
-- `/home/knitli/readable/readable/metrics/coleman_liau.py`
-- `/home/knitli/readable/readable/metrics/dale_chall.py`
-- `/home/knitli/readable/readable/metrics/flesch.py`
-- `/home/knitli/readable/readable/metrics/flesch_kincaid.py`
-- `/home/knitli/readable/readable/metrics/gunning_fog.py`
-- `/home/knitli/readable/readable/metrics/linsear_write.py`
-- `/home/knitli/readable/readable/metrics/smog.py`
-- `/home/knitli/readable/readable/metrics/spache.py`
-- `/home/knitli/readable/archive/docs/source/ari.rst`
-- `/home/knitli/readable/archive/docs/source/coleman_liau.rst`
-- `/home/knitli/readable/archive/docs/source/dale_chall.rst`
-- `/home/knitli/readable/archive/docs/source/flesch.rst`
-- `/home/knitli/readable/archive/docs/source/flesch_kincaid.rst`
-- `/home/knitli/readable/archive/docs/source/gunning_fog.rst`
-- `/home/knitli/readable/archive/docs/source/linear_write.rst`
-- `/home/knitli/readable/archive/docs/source/smog.rst`
-- `/home/knitli/readable/archive/docs/source/spache.rst`
+- `/home/knitli/readscore/README.md`
+- `/home/knitli/readscore/docs/metrics.md`
+- `/home/knitli/readscore/docs/ari.md`
+- `/home/knitli/readscore/docs/extending.md`
+- `/home/knitli/readscore/readscore/readability.py`
+- `/home/knitli/readscore/readscore/types/results.py`
+- `/home/knitli/readscore/readscore/metrics/ari.py`
+- `/home/knitli/readscore/readscore/metrics/coleman_liau.py`
+- `/home/knitli/readscore/readscore/metrics/dale_chall.py`
+- `/home/knitli/readscore/readscore/metrics/flesch.py`
+- `/home/knitli/readscore/readscore/metrics/flesch_kincaid.py`
+- `/home/knitli/readscore/readscore/metrics/gunning_fog.py`
+- `/home/knitli/readscore/readscore/metrics/linsear_write.py`
+- `/home/knitli/readscore/readscore/metrics/smog.py`
+- `/home/knitli/readscore/readscore/metrics/spache.py`
+- `/home/knitli/readscore/archive/docs/source/ari.rst`
+- `/home/knitli/readscore/archive/docs/source/coleman_liau.rst`
+- `/home/knitli/readscore/archive/docs/source/dale_chall.rst`
+- `/home/knitli/readscore/archive/docs/source/flesch.rst`
+- `/home/knitli/readscore/archive/docs/source/flesch_kincaid.rst`
+- `/home/knitli/readscore/archive/docs/source/gunning_fog.rst`
+- `/home/knitli/readscore/archive/docs/source/linear_write.rst`
+- `/home/knitli/readscore/archive/docs/source/smog.rst`
+- `/home/knitli/readscore/archive/docs/source/spache.rst`

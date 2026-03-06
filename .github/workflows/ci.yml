@@ -6,9 +6,9 @@ name: CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   test:
@@ -18,38 +18,38 @@ jobs:
         python-version: ["3.12", "3.13"]
 
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Install uv
-      uses: astral-sh/setup-uv@v5
-      with:
-        enable-cache: true
+      - uses: actions/checkout@v4
 
-    - name: Set up Python ${{ matrix.python-version }}
-      run: uv python install ${{ matrix.python-version }}
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
 
-    - name: Install dependencies
-      run: uv sync --all-groups
+      - name: Set up Python ${{ matrix.python-version }}
+        run: uv python install ${{ matrix.python-version }}
 
-    - name: Download NLTK data
-      run: uv run python -c "import nltk; nltk.download('punkt_tab')"
+      - name: Install dependencies
+        run: uv sync --all-groups
 
-    - name: Lint with ruff
-      run: uv run ruff check .
+      - name: Download NLTK data
+        run: uv run python -c "import nltk; nltk.download('punkt_tab')"
 
-    - name: Format check with ruff
-      run: uv run ruff format --check .
+      - name: Lint with ruff
+        run: uv run ruff check .
 
-    - name: Type check with ty
-      run: uv run ty .
+      - name: Format check with ruff
+        run: uv run ruff format --check .
 
-    - name: Run tests with pytest
-      run: uv run pytest --cov=readable --cov-report=xml
+      - name: Type check with ty
+        run: uv run ty .
 
-    - name: Upload coverage to Codecov
-      uses: codecov/codecov-action@v4
-      with:
-        file: ./coverage.xml
-        fail_ci_if_error: false
-      env:
-        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+      - name: Run tests with pytest
+        run: uv run pytest --cov=readscore --cov-report=xml
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v4
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: false
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

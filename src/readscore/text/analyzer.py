@@ -6,11 +6,11 @@
 
 import re
 
-from readable.resources.loader import ResourceLoader
-from readable.resources.stemmer import Stemmer
-from readable.text.statistics import StatSummary
-from readable.text.syllables import count_syllables
-from readable.text.tokenizer import Tokenizer
+from readscore.resources.loader import ResourceLoader
+from readscore.resources.stemmer import Stemmer
+from readscore.text.statistics import StatSummary
+from readscore.text.syllables import count_syllables
+from readscore.text.tokenizer import Tokenizer
 
 
 class TextAnalyzer:

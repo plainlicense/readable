@@ -4,12 +4,12 @@
 # SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 
 title: API Reference
-description: Complete reference for the Readable public API.
+description: Complete reference for the readscore public API.
 ---
 
 This page covers everything you call directly: the `Readability` class, the result types it
 returns, the `StatSummary` object, and the `ReadabilityMetric` enum. Detailed explanations of
-what each metric measures and when to use it live in the [metrics section](/readable/metrics/).
+what each metric measures and when to use it live in the [metrics section](/readscore/metrics/).
 
 ---
 
@@ -63,7 +63,7 @@ Each raises `ValueError` if the text is shorter than `min_words`.
 r.ari() -> ARIResult
 ```
 
-Calculates the [Automated Readability Index](/readable/metrics/ari/). Returns a grade level
+Calculates the [Automated Readability Index](/readscore/metrics/ari/). Returns a grade level
 and a corresponding reader age range. Uses character count and sentence length — no syllable
 counting.
 
@@ -73,7 +73,7 @@ counting.
 r.coleman_liau() -> ColemanLiauResult
 ```
 
-Calculates the [Coleman-Liau Index](/readable/metrics/coleman-liau/). Uses letters per word
+Calculates the [Coleman-Liau Index](/readscore/metrics/coleman-liau/). Uses letters per word
 and sentences per 100 words. Character-based, like ARI.
 
 #### `dale_chall()`
@@ -82,7 +82,7 @@ and sentences per 100 words. Character-based, like ARI.
 r.dale_chall() -> DaleChallResult
 ```
 
-Calculates the [Dale-Chall Readability Score](/readable/metrics/dale-chall/). Compares words
+Calculates the [Dale-Chall Readability Score](/readscore/metrics/dale-chall/). Compares words
 against a list of 3,000 familiar words to count unfamiliar vocabulary.
 
 #### `flesch()`
@@ -91,7 +91,7 @@ against a list of 3,000 familiar words to count unfamiliar vocabulary.
 r.flesch() -> FleschResult
 ```
 
-Calculates the [Flesch Reading Ease](/readable/metrics/flesch/) score. Returns a 0–100 score
+Calculates the [Flesch Reading Ease](/readscore/metrics/flesch/) score. Returns a 0–100 score
 where higher means easier, plus an ease label and grade levels. This is the only metric in the
 library where a higher score means simpler text.
 
@@ -101,7 +101,7 @@ library where a higher score means simpler text.
 r.flesch_kincaid() -> FleschKincaidResult
 ```
 
-Calculates the [Flesch-Kincaid Grade Level](/readable/metrics/flesch-kincaid/). Uses the same
+Calculates the [Flesch-Kincaid Grade Level](/readscore/metrics/flesch-kincaid/). Uses the same
 inputs as Flesch but outputs a US grade level rather than an ease score.
 
 #### `gunning_fog()`
@@ -110,7 +110,7 @@ inputs as Flesch but outputs a US grade level rather than an ease score.
 r.gunning_fog() -> GunningFogResult
 ```
 
-Calculates the [Gunning Fog Index](/readable/metrics/gunning-fog/). Counts polysyllabic words,
+Calculates the [Gunning Fog Index](/readscore/metrics/gunning-fog/). Counts polysyllabic words,
 excluding proper nouns and hyphenated compounds.
 
 #### `linsear_write()`
@@ -119,7 +119,7 @@ excluding proper nouns and hyphenated compounds.
 r.linsear_write() -> LinsearWriteResult
 ```
 
-Calculates the [Linsear Write Formula](/readable/metrics/linsear-write/). Designed for
+Calculates the [Linsear Write Formula](/readscore/metrics/linsear-write/). Designed for
 technical writing. Counts words with two or fewer syllables against words with three or more.
 
 #### `smog()`
@@ -128,7 +128,7 @@ technical writing. Counts words with two or fewer syllables against words with t
 r.smog(all_sentences: bool = False, ignore_length: bool = False) -> SmogResult
 ```
 
-Calculates the [SMOG Index](/readable/metrics/smog/). Requires at least 30 sentences by
+Calculates the [SMOG Index](/readscore/metrics/smog/). Requires at least 30 sentences by
 default.
 
 **Parameters**
@@ -151,7 +151,7 @@ and should be treated as approximate.
 r.spache() -> SpacheResult
 ```
 
-Calculates the [Spache Readability Formula](/readable/metrics/spache/). Designed for primary
+Calculates the [Spache Readability Formula](/readscore/metrics/spache/). Designed for primary
 school texts (grades 1–3). Compares vocabulary against a word list calibrated for young readers.
 
 ### `statistics()`
@@ -182,7 +182,7 @@ This is a convenience method for quick inspection or serialization. It is a subs
 `num_dale_chall_complex`, `num_spache_complex`) or direct attribute access.
 
 ```python
-from readable import Readability
+from readscore import Readability
 
 r = Readability("The cat sat on the mat. Simple words make simple text." * 5)
 stats = r.statistics()
@@ -355,7 +355,7 @@ Returns a sorted list of all enum member names as strings (the Python attribute 
 the short display names):
 
 ```python
-from readable.types.enums import ReadabilityMetric
+from readscore.types.enums import ReadabilityMetric
 
 print(ReadabilityMetric.metrics())
 # ['ARI', 'COLEMAN_LIAU', 'DALE_CHALL', 'FLESCH', 'FLESCH_KINCAID',
@@ -369,17 +369,17 @@ callers who want to instantiate a metric directly using a `StatSummary` rather t
 through `Readability`:
 
 ```python
-from readable.types.enums import ReadabilityMetric
+from readscore.types.enums import ReadabilityMetric
 
 metric = ReadabilityMetric.FLESCH
-cls = metric.measure_class  # <class 'readable.metrics.flesch.Flesch'>
+cls = metric.measure_class  # <class 'readscore.metrics.flesch.Flesch'>
 ```
 
 **Iterating over all metrics**
 
 ```python
-from readable import Readability
-from readable.types.enums import ReadabilityMetric
+from readscore import Readability
+from readscore.types.enums import ReadabilityMetric
 
 r = Readability(text)
 

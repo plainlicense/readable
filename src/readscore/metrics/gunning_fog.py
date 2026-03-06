@@ -6,9 +6,9 @@
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import GUNNING_FOG as _GUNNING_FOG_ABOUT
-from readable.types._interfaces import BaseMeasure
-from readable.types.results import GunningFogResult
+from readscore.constants.about_metric import GUNNING_FOG as _GUNNING_FOG_ABOUT
+from readscore.types._interfaces import BaseMeasure
+from readscore.types.results import GunningFogResult
 
 
 @dataclass(frozen=True, slots=True)

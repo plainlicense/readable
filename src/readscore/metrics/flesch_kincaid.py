@@ -6,9 +6,9 @@
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import FLESCH_KINCAID as _FLESCH_KINCAID_ABOUT
-from readable.types._interfaces import BaseMeasure
-from readable.types.results import FleschKincaidResult
+from readscore.constants.about_metric import FLESCH_KINCAID as _FLESCH_KINCAID_ABOUT
+from readscore.types._interfaces import BaseMeasure
+from readscore.types.results import FleschKincaidResult
 
 
 @dataclass(frozen=True, slots=True)

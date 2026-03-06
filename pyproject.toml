@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 [project]
-name = "readable"
+name = "readscore"
 description = "Modernized readability scoring for Python"
 readme = "README.md"
 requires-python = ">=3.12"
@@ -28,10 +28,10 @@ dependencies = [
 dynamic = ["version"]
 
 [project.urls]
-Changelog = "https://github.com/plainlicense/readable/releases"
-Documentation = "https://docs.plainlicense.org/readable/"
-Issues = "https://github.com/plainlicense/readable/issues"
-Repository = "https://github.com/plainlicense/readable"
+Changelog = "https://github.com/plainlicense/readscore/releases"
+Documentation = "https://docs.plainlicense.org/readscore/"
+Issues = "https://github.com/plainlicense/readscore/issues"
+Repository = "https://github.com/plainlicense/readscore"
 
 [dependency-groups]
 dev = [
@@ -49,20 +49,20 @@ build-backend = "hatchling.build"
 [tool.coverage.run]
 omit = [
   "src/**/__init__.py",
-  "src/readable/resources/data/*",
-  "src/readable/constants/*"
+  "src/readscore/resources/data/*",
+  "src/readscore/constants/*"
 ]
 
 [tool.hatch.build.hooks.version]
 additionalProperties = true
-path = "src/readable/__about__.py"
+path = "src/readscore/__about__.py"
 # REUSE-IgnoreStart
 template = '''
 
 # SPDX-FileCopyrightText: 2026 PlainLicense
 #
 # SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
-"""About file for the readable."""
+"""About file for the readscore."""
 from typing import Final
 
 __version__: Final[str] = "{version}"
@@ -137,12 +137,12 @@ invalid-argument-type = "ignore"  # Test mocks and fixtures may have dynamic typ
 [[tool.ty.overrides]]
 # All __init__.py files' lazy import patterns cause false positives
 include = [
-  "src/readable/__init__.py",
-  "src/readable/**/__init__.py",
-  "src/readable/*/__init__.py",
-  "src/readable/*/*/__init__.py",
-  "src/readable/*/*/*/__init__.py",
-  "src/readable/*/*/*/*/__init__.py",
+  "src/readscore/__init__.py",
+  "src/readscore/**/__init__.py",
+  "src/readscore/*/__init__.py",
+  "src/readscore/*/*/__init__.py",
+  "src/readscore/*/*/*/__init__.py",
+  "src/readscore/*/*/*/*/__init__.py",
 ]
 
 [tool.ty.overrides.rules]

@@ -6,9 +6,9 @@
 
 from dataclasses import dataclass
 
-from readable import Readability
-from readable.types._interfaces import BaseMeasure
-from readable.types.results import GradeResult
+from readscore import Readability
+from readscore.types._interfaces import BaseMeasure
+from readscore.types.results import GradeResult
 
 
 @dataclass(frozen=True, slots=True)

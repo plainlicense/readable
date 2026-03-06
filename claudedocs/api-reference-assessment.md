@@ -7,7 +7,7 @@ SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 # API Reference Documentation Assessment
 
 **Date**: 2026-03-05
-**Question**: Should API reference docs for Readable be auto-generated using Griffe, or written manually?
+**Question**: Should API reference docs for readscore be auto-generated using Griffe, or written manually?
 
 ---
 
@@ -26,7 +26,7 @@ Evidence from the codebase:
 - `BaseResult`, `GradeResult`, `ARIResult`, `FleschResult`: One-line class docstrings. No field docstrings. The `grade_level` property on `GradeResult` has one line that essentially restates its signature.
 - `ReadabilityMetric`: Reasonably well-structured enum, but the docstrings on methods like `_names` and `_all_names` describe mechanisms, not intent.
 
-The `about` property on each metric class is the best source of human-readable description in the codebase, but it lives inside the metric implementation classes (`ARI`, `Flesch`, etc.), which are not part of the public API. Users never instantiate them directly.
+The `about` property on each metric class is the best source of human-readscore description in the codebase, but it lives inside the metric implementation classes (`ARI`, `Flesch`, etc.), which are not part of the public API. Users never instantiate them directly.
 
 **If Griffe ran on this codebase today, the output would be a formatted echo of method signatures and one-sentence docstrings.** It would not answer: what does `grade_levels` contain? What is the difference between `grade_level` (property) and `grade_levels` (field)? When does `smog()` raise vs. warn? What do the `ages` values mean? None of that is in the docstrings.
 
@@ -83,7 +83,7 @@ Write a small Python script that calls the Griffe API directly, renders custom o
 Problems: Still requires Jinja templating work, still produces output that needs manual review before commit, and the "run manually when API changes" step is easy to forget.
 
 **Option C: Custom Astro integration using Griffe JSON output**
-Griffe can serialize its extracted data to JSON via `griffe dump readable`. An Astro integration could read this JSON at build time and generate pages. This is architecturally sound but requires building the integration from scratch — substantial work for a small library with no existing Python/Astro integration community.
+Griffe can serialize its extracted data to JSON via `griffe dump readscore`. An Astro integration could read this JSON at build time and generate pages. This is architecturally sound but requires building the integration from scratch — substantial work for a small library with no existing Python/Astro integration community.
 
 **None of these options are off-the-shelf.** All require custom work to bridge Python source extraction and Starlight's Node.js build process.
 
@@ -224,7 +224,7 @@ Do not document `BaseMeasure`, `BaseResult`, `BaseStatSummary` in the user refer
 If the docstrings are substantially improved in a future pass, the path with the least integration cost would be:
 
 1. Install `griffe` and `griffe2md` as dev dependencies in `pyproject.toml`
-2. Write a Python build script that runs `griffe2md readable --output docs-site/src/content/docs/reference/` with a custom template
+2. Write a Python build script that runs `griffe2md readscore --output docs-site/src/content/docs/reference/` with a custom template
 3. Add `uv run python scripts/generate-api-docs.py` as a pre-build step in `docs-site/package.json`
 4. Commit the generated files (do not gitignore them — Starlight needs them at build time, and a CI-only Python dep adds complexity)
 

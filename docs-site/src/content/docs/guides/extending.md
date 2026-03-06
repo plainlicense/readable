@@ -3,11 +3,11 @@
 #
 # SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 
-title: Extending Readable
+title: Extending readscore
 description: Learn how to implement your own custom readability metrics.
 ---
 
-One of the primary goals of the `readable` library is to make it easy to implement and use custom readability metrics.
+One of the primary goals of the `readscore` library is to make it easy to implement and use custom readability metrics.
 
 ## How to Implement a Custom Metric
 
@@ -22,7 +22,7 @@ Result types use Python dataclasses for clean, typed data structures.
 
 ```python
 from dataclasses import dataclass
-from readable.types.results import GradeResult
+from readscore.types.results import GradeResult
 
 @dataclass(frozen=True, slots=True)
 class MyCustomResult(GradeResult):
@@ -36,7 +36,7 @@ The measure class performs the actual calculation using the text statistics.
 
 ```python
 from dataclasses import dataclass
-from readable.types._interfaces import BaseMeasure
+from readscore.types._interfaces import BaseMeasure
 
 @dataclass(frozen=True, slots=True)
 class MyCustomMetric(BaseMeasure):
@@ -84,7 +84,7 @@ The `about` property returns a short description of the metric. It is used when 
 Pass the `stats` object from a `Readability` instance to your metric. The `_stats` parameter accepts any `BaseStatSummary`, and `_min_words` sets the minimum word count required before the metric will calculate.
 
 ```python
-from readable import Readability
+from readscore import Readability
 
 text = """
 Plain language means writing that your audience can understand the first time they
@@ -139,8 +139,8 @@ If `_stats.num_words` is less than `_min_words`, the `__post_init__` check in th
 The `ReadabilityMetric` enum maps each built-in metric name to its measure class. Use it when you need to select or iterate over metrics by name at runtime.
 
 ```python
-from readable import Readability
-from readable.types.enums import ReadabilityMetric
+from readscore import Readability
+from readscore.types.enums import ReadabilityMetric
 
 text = """
 Plain language means writing that your audience can understand the first time they

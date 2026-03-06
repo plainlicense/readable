@@ -1,20 +1,20 @@
 ---
-title: Readable
+title: readscore
 description: Score text readability with nine proven formulas. Modern Python library with typed results and a clean API.
 template: splash
 hero:
   tagline: Nine readability formulas. One clean API.
   image:
-    file: ../../assets/images/readable_logo.svg
+    file: ../../assets/images/readscore_logo.svg
   actions:
     - text: Get Started
-      link: /readable/metrics/
+      link: /readscore/metrics/
       icon: right-arrow
     - text: Choose a Metric
-      link: /readable/choosing-a-metric/
+      link: /readscore/choosing-a-metric/
       icon: list-format
     - text: GitHub
-      link: https://github.com/plainlicense/readable
+      link: https://github.com/plainlicense/readscore
       icon: external
       variant: minimal
 ---
@@ -24,7 +24,7 @@ import { Card, CardGrid, LinkCard } from '@astrojs/starlight/components';
 ## Installation
 
 ```bash
-pip install readable
+pip install readscore
 ```
 
 ## Quick Start
@@ -32,7 +32,7 @@ pip install readable
 Pass text to `Readability`, then call any metric method. Each method returns a typed result object.
 
 ```python
-from readable import Readability
+from readscore import Readability
 
 text = """
 Plain language means writing that your audience can understand the first time
@@ -41,7 +41,7 @@ simplify your ideas — just the way you express them. Jargon and long sentences
 slow people down and make them feel excluded. Simple writing is not dumbed-down
 writing. It is respectful writing. Federal agencies, healthcare providers, and
 legal teams use readability formulas to check whether documents reach their
-intended audience. Running a check takes seconds. Readable gives you nine
+intended audience. Running a check takes seconds. readscore gives you nine
 proven formulas in one Python library with a consistent API.
 """
 
@@ -71,7 +71,7 @@ print(r.stats.avg_syllables_per_word) # 1.4
 ```
 
 :::note[Minimum text length]
-Readable defaults to a minimum of 100 words. Passing shorter text raises a `ValueError`. You can lower the threshold with `Readability(text, min_words=50)`, but scores become less reliable on short texts. SMOG also requires at least 30 sentences.
+readscore defaults to a minimum of 100 words. Passing shorter text raises a `ValueError`. You can lower the threshold with `Readability(text, min_words=50)`, but scores become less reliable on short texts. SMOG also requires at least 30 sentences.
 :::
 
 ## What you get
@@ -94,11 +94,11 @@ Readable defaults to a minimum of 100 words. Passing shorter text raises a `Valu
 <LinkCard
   title="Which metric should I use?"
   description="A plain-language guide to all nine formulas — what they measure, when to use them, and how their scores compare on the same text."
-  href="/readable/choosing-a-metric/"
+  href="/readscore/choosing-a-metric/"
 />
 
 ## Built for plain language work
 
-Readable is the scoring engine behind [Plain License](https://plainlicense.org/) tools, including the in-development [plainr](https://github.com/plainlicense/plainr) CLI. It is designed to run in CI pipelines, scripts, and anywhere Python runs.
+readscore is the scoring engine behind [Plain License](https://plainlicense.org/) tools, including the in-development [plainr](https://github.com/plainlicense/plainr) CLI. It is designed to run in CI pipelines, scripts, and anywhere Python runs.
 
 The library is a modernized fork of [py-readability-metrics](https://github.com/cdimascio/py-readability-metrics) by [Carmine DiMascio](https://github.com/cdimascio).

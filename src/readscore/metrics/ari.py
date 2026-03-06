@@ -8,9 +8,9 @@ import math
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import ARI as _ARI_ABOUT
-from readable.types._interfaces import BaseMeasure
-from readable.types.results import ARIResult
+from readscore.constants.about_metric import ARI as _ARI_ABOUT
+from readscore.types._interfaces import BaseMeasure
+from readscore.types.results import ARIResult
 
 
 _ARI_AGES: tuple[tuple[int, int], ...] = (

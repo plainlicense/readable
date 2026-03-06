@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: LicenseRef-PlainMIT or MIT
 
-"""Type definitions and interfaces for the readable library."""
+"""Type definitions and interfaces for the readscore library."""
 
 from __future__ import annotations
 
@@ -18,9 +18,9 @@ from lateimport import create_late_getattr
 
 
 if TYPE_CHECKING:
-    from readable.types._interfaces import BaseMeasure, BaseResult, BaseStatSummary
-    from readable.types.enums import Metric, ReadabilityMetric
-    from readable.types.results import (
+    from readscore.types._interfaces import BaseMeasure, BaseResult, BaseStatSummary
+    from readscore.types.enums import Metric, ReadabilityMetric
+    from readscore.types.results import (
         ARIResult,
         ColemanLiauResult,
         DaleChallResult,

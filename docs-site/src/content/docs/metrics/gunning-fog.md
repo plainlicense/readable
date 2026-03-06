@@ -111,12 +111,12 @@ r.gunning_fog()  # Runs, but with reduced reliability
 - **Common long words count as "complex."** Words like "interesting," "important," "beautiful," "understand," and "government" all have three syllables and count as complex words. These are not difficult vocabulary for most adult readers, but they increase the score regardless.
 - **Short specialist terms are invisible.** Medical, technical, and legal jargon often uses short words — "stat," "null," "flux," "cyst," "prion." These score as simple even when completely opaque to a lay reader. For health and medical materials, SMOG is a better choice.
 - **Implementation variance on exclusions.** Fog scores from different tools may not agree on proper-noun-heavy text. A news article about "Mayor Alejandra Gutierrez" will score differently in tools that apply Gunning's proper noun exclusion versus tools that count all polysyllabic words. If you need to compare Fog scores across tools, check how each handles exclusions.
-- **Scores below 6 are outside the formula's range.** The formula was designed for adult prose at sixth-grade level and above. Using it to assess simple text for children is not appropriate — use [Spache](/readable/metrics/spache/) for grades 1–3 or [Dale-Chall](/readable/metrics/dale-chall/) for grades 4 and above.
+- **Scores below 6 are outside the formula's range.** The formula was designed for adult prose at sixth-grade level and above. Using it to assess simple text for children is not appropriate — use [Spache](/readscore/metrics/spache/) for grades 1–3 or [Dale-Chall](/readscore/metrics/dale-chall/) for grades 4 and above.
 
 ## Example
 
 ```python
-from readable import Readability
+from readscore import Readability
 
 text = """
 Annual reports for large public companies often run to hundreds of pages, covering
@@ -144,7 +144,7 @@ print(f"Grade: {result.grade_levels}")    # ['college']
 
 ## See Also
 
-- [Flesch Reading Ease](/readable/metrics/flesch/) — also uses sentence length and syllables per word, but averages syllables rather than counting complex words
-- [SMOG Index](/readable/metrics/smog/) — also counts polysyllabic words, but uses a fixed 30-sentence sample and targets 100% comprehension; preferred for health materials
-- [Flesch-Kincaid Grade Level](/readable/metrics/flesch-kincaid/) — grade level output using average syllables per word rather than a polysyllabic word threshold
-- [Choosing a Metric](/readable/choosing-a-metric/) — decision guide for all nine metrics
+- [Flesch Reading Ease](/readscore/metrics/flesch/) — also uses sentence length and syllables per word, but averages syllables rather than counting complex words
+- [SMOG Index](/readscore/metrics/smog/) — also counts polysyllabic words, but uses a fixed 30-sentence sample and targets 100% comprehension; preferred for health materials
+- [Flesch-Kincaid Grade Level](/readscore/metrics/flesch-kincaid/) — grade level output using average syllables per word rather than a polysyllabic word threshold
+- [Choosing a Metric](/readscore/choosing-a-metric/) — decision guide for all nine metrics

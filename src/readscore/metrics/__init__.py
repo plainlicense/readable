@@ -18,15 +18,15 @@ from lateimport import create_late_getattr
 
 
 if TYPE_CHECKING:
-    from readable.metrics.ari import ARI
-    from readable.metrics.coleman_liau import ColemanLiau
-    from readable.metrics.dale_chall import DaleChall
-    from readable.metrics.flesch import Flesch
-    from readable.metrics.flesch_kincaid import FleschKincaid
-    from readable.metrics.gunning_fog import GunningFog
-    from readable.metrics.linsear_write import LinsearWrite
-    from readable.metrics.smog import Smog
-    from readable.metrics.spache import Spache
+    from readscore.metrics.ari import ARI
+    from readscore.metrics.coleman_liau import ColemanLiau
+    from readscore.metrics.dale_chall import DaleChall
+    from readscore.metrics.flesch import Flesch
+    from readscore.metrics.flesch_kincaid import FleschKincaid
+    from readscore.metrics.gunning_fog import GunningFog
+    from readscore.metrics.linsear_write import LinsearWrite
+    from readscore.metrics.smog import Smog
+    from readscore.metrics.spache import Spache
 
 _dynamic_imports: MappingProxyType[str, tuple[str, str]] = MappingProxyType({
     "ARI": (__spec__.parent, "ari"),

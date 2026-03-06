@@ -6,7 +6,7 @@
 
 from dataclasses import dataclass
 
-from readable.types._interfaces import BaseResult
+from readscore.types._interfaces import BaseResult
 
 
 @dataclass(frozen=True, order=True, slots=True)

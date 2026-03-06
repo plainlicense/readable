@@ -2,4 +2,4 @@
 #
 # SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 
-"""Usage examples for the readable library."""
+"""Usage examples for the readscore library."""

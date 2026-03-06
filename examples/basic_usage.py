@@ -2,9 +2,9 @@
 #
 # SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 
-"""Basic usage of the readable library."""
+"""Basic usage of the readscore library."""
 
-from readable import Readability
+from readscore import Readability
 
 
 def main() -> None:

@@ -6,7 +6,7 @@ SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 
 # Research Report: Dale-Chall, Spache, and Linsear Write Readability Formulas
 
-**Prepared for:** Readable Library Documentation
+**Prepared for:** readscore Library Documentation
 **Date:** 2026-03-05
 **Scope:** Historical background, formula mechanics, word list analysis, validated use cases, known limitations, and implementation notes for three readability metrics.
 
@@ -124,7 +124,7 @@ This creates an interesting phenomenon: a text that uses abstract nouns (-tion, 
 
 **Inter-formula disagreement:** A study comparing seven readability formulas applied to elementary social studies textbooks found no universal agreement in rank-ordering difficulty, with wide discrepancies leaving the same textbook rated several grade levels apart by different formulas (Chen, 1986, cited in Readability of Texts: State of the Art). This is partly because Dale-Chall weights vocabulary over sentence length, while other formulas do the reverse.
 
-**Counterintuitive results for literary texts:** The Chance article cited a demonstration where Shakespeare's "All the World's a Stage" monologue scored more readable (lower grade level) than either the standard or simplified Wikipedia articles about Shakespeare. This is because Shakespeare used primarily monosyllabic, common words. Dale-Chall's inability to handle syntactic complexity (inverted word order, archaic constructions) produces misleading scores for literary texts.
+**Counterintuitive results for literary texts:** The Chance article cited a demonstration where Shakespeare's "All the World's a Stage" monologue scored more readscore (lower grade level) than either the standard or simplified Wikipedia articles about Shakespeare. This is because Shakespeare used primarily monosyllabic, common words. Dale-Chall's inability to handle syntactic complexity (inverted word order, archaic constructions) produces misleading scores for literary texts.
 
 ### 1.6 Best Use Cases
 
@@ -422,10 +422,10 @@ For serious readability assessment, it should be used alongside at least one oth
 
 ### 5.1 What the Library Does
 
-The Readable library uses Porter-stemmed versions of both the Dale-Chall and Spache word lists (stored in `readable/resources/data/` as `dale_chall_porterstem.txt` and `spache_easy_porterstem.txt`). When analyzing a text, each word is Porter-stemmed via NLTK's `PorterStemmer` before being checked against the word list:
+The readscore library uses Porter-stemmed versions of both the Dale-Chall and Spache word lists (stored in `readscore/resources/data/` as `dale_chall_porterstem.txt` and `spache_easy_porterstem.txt`). When analyzing a text, each word is Porter-stemmed via NLTK's `PorterStemmer` before being checked against the word list:
 
 ```python
-# From readable/resources/stemmer.py
+# From readscore/resources/stemmer.py
 return self._porter_stemmer.stem(word.lower())
 ```
 

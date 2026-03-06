@@ -217,7 +217,7 @@ server.json
 server.json.license
 server.yaml
 server.yaml.license
-src/readable/__about__.py
+src/readscore/__about__.py
 test-results.xml
 
 .jj/

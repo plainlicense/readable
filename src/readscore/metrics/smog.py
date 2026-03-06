@@ -9,9 +9,9 @@ import warnings
 
 from dataclasses import dataclass, field
 
-from readable.constants.about_metric import SMOG as _SMOG_ABOUT
-from readable.types._interfaces import BaseMeasure
-from readable.types.results import SmogResult
+from readscore.constants.about_metric import SMOG as _SMOG_ABOUT
+from readscore.types._interfaces import BaseMeasure
+from readscore.types.results import SmogResult
 
 
 @dataclass(frozen=True, slots=True)
@@ -63,7 +63,7 @@ class Smog(BaseMeasure):
 
         # To keep it simple and avoid circularity, I'll implement a minimal analyzer here
         # or just use the count_syllables we already have.
-        from readable.text.syllables import count_syllables
+        from readscore.text.syllables import count_syllables
 
         mid = len(self.sentences) // 2
         first_10 = self.sentences[:10]

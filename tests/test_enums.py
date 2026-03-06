@@ -4,9 +4,9 @@
 
 """Unit tests for ReadabilityMetric enum."""
 
-from readable.metrics.ari import ARI
-from readable.metrics.flesch import Flesch
-from readable.types.enums import ReadabilityMetric
+from readscore.metrics.ari import ARI
+from readscore.metrics.flesch import Flesch
+from readscore.types.enums import ReadabilityMetric
 
 
 class TestEnums:

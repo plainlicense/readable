@@ -126,7 +126,7 @@ r.ari()
 ## Example
 
 ```python
-from readable import Readability
+from readscore import Readability
 
 text = """
 Technical manuals often fail not because the concepts are too hard, but because
@@ -148,8 +148,8 @@ print(f"Ages: {result.ages}")               # [17, 18]
 
 ## See Also
 
-- [Coleman-Liau Index](/readable/metrics/coleman-liau/) — same character-based approach,
+- [Coleman-Liau Index](/readscore/metrics/coleman-liau/) — same character-based approach,
   but counts letters only (no digits)
-- [Flesch-Kincaid Grade Level](/readable/metrics/flesch-kincaid/) — uses syllables instead
+- [Flesch-Kincaid Grade Level](/readscore/metrics/flesch-kincaid/) — uses syllables instead
   of characters; more sensitive to spoken-language complexity
-- [Choosing a Metric](/readable/choosing-a-metric/) — decision guide for all nine metrics
+- [Choosing a Metric](/readscore/choosing-a-metric/) — decision guide for all nine metrics
