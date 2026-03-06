@@ -39,9 +39,6 @@ jobs:
       - name: Publish to PyPI
         if: startsWith(github.ref, 'refs/tags/v')
         run: uv publish
-        env:
-          UV_PUBLISH_TOKEN: ${{ secrets.PYPI_TOKEN }}
-
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
