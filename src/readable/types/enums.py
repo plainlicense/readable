@@ -8,7 +8,7 @@ from __future__ import annotations
 
 import platform
 
-from dataclasses import dataclass
+from dataclasses import FrozenInstanceError, dataclass
 from enum import Enum
 from types import DynamicClassAttribute
 from typing import TYPE_CHECKING, Any, Self, cast
@@ -31,14 +31,14 @@ if TYPE_CHECKING:
 
 _classes: dict[str, LateImport | type[BaseMeasure]] = {
     "ARI": lateimport("readable.metrics.ari", "ARI"),
-    "ColemanLiau": lateimport("readable.metrics.coleman_liau", "ColemanLiau"),
-    "DaleChall": lateimport("readable.metrics.dale_chall", "DaleChall"),
-    "Flesch": lateimport("readable.metrics.flesch", "Flesch"),
-    "FleschKincaid": lateimport("readable.metrics.flesch_kincaid", "FleschKincaid"),
-    "GunningFog": lateimport("readable.metrics.gunning_fog", "GunningFog"),
-    "LinsearWrite": lateimport("readable.metrics.linsear_write", "LinsearWrite"),
-    "Smog": lateimport("readable.metrics.smog", "Smog"),
-    "Spache": lateimport("readable.metrics.spache", "Spache"),
+    "COLEMAN_LIAU": lateimport("readable.metrics.coleman_liau", "ColemanLiau"),
+    "DALE_CHALL": lateimport("readable.metrics.dale_chall", "DaleChall"),
+    "FLESCH": lateimport("readable.metrics.flesch", "Flesch"),
+    "FLESCH_KINCAID": lateimport("readable.metrics.flesch_kincaid", "FleschKincaid"),
+    "GUNNING_FOG": lateimport("readable.metrics.gunning_fog", "GunningFog"),
+    "LINSEAR_WRITE": lateimport("readable.metrics.linsear_write", "LinsearWrite"),
+    "SMOG": lateimport("readable.metrics.smog", "Smog"),
+    "SPACHE": lateimport("readable.metrics.spache", "Spache"),
 }
 
 
@@ -173,20 +173,37 @@ class ReadabilityMetric(Metric, Enum):
     SMOG = Metric(_SMOG_ABOUT, "smog", "SMOG", "Simple Measure of Gobbledygook Index")
     SPACHE = Metric(_SPACHE_ABOUT, "spache", "Spache", "Spache Readability Formula")
 
+    def __setattr__(self, name: str, value: Any) -> None:  # ty:ignore[invalid-method-override]
+        """Allow Enum internals while preserving frozen field semantics."""
+        if name in Metric.__dataclass_fields__:
+            raise FrozenInstanceError(f"cannot assign to field {name!r}")
+        object.__setattr__(self, name, value)
+
+    def __new__(cls, value: Metric) -> ReadabilityMetric:
+        """Create a new ReadabilityMetric enum member."""
+        obj = object.__new__(cls)
+        object.__setattr__(obj, "_value_", value)
+        return obj
+
     def __init__(self, metric: Metric) -> None:
         """Initialize the ReadabilityMetric enum member."""
         for key in metric.__annotations__:
-            value = getattr(metric, key)
-            object.__setattr__(self, key, value)
+            val = getattr(metric, key)
+            object.__setattr__(self, key, val)
 
     def __str__(self) -> str:
         """Return the string representation of the readability metric."""
         return str(self.value)
 
     @property
-    def name(self) -> str:
-        """Return the primary name of the readability metric."""
-        return self.value.name
+    def short(self) -> str:
+        """Return the short name of the readability metric."""
+        return self.short_name
+
+    @property
+    def full(self) -> str:
+        """Return the full name of the readability metric."""
+        return self.full_name
 
     @classmethod
     def metrics(cls) -> list[str]:
@@ -196,11 +213,10 @@ class ReadabilityMetric(Metric, Enum):
     @property
     def measure_class(self) -> type[BaseMeasure]:
         """Return the measure class for this metric."""
-        return (
-            cast(LateImport[type[BaseMeasure]], _classes[self.name])._resolve()
-            if isinstance(_classes[self.name], LateImport)
-            else cast(type[BaseMeasure], _classes[self.name])
-        )
+        entry = _classes[self.name]
+        if isinstance(entry, LateImport):
+            return entry._resolve()
+        return entry
 
     @classmethod
     def from_name(cls, name: str) -> ReadabilityMetric:
@@ -216,8 +232,9 @@ class ReadabilityMetric(Metric, Enum):
 
         Supports dynamic addition of new metrics at runtime. The new member should be an instance of Metric, and the measure_class should be the corresponding class that implements the metric's calculation.
         """
-        _add_enum_member(cls, new_member.name.capitalize(), new_member)
-        _classes[new_member.name] = measure_class
+        member_name = new_member.variable_name.upper()
+        _add_enum_member(cls, member_name, new_member)
+        _classes[member_name] = measure_class
 
 
 __all__ = ("Metric", "ReadabilityMetric")
