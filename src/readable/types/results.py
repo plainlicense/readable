@@ -2,18 +2,20 @@
 
 from dataclasses import dataclass
 
-from ._interfaces import BaseResult
+from readable.types._interfaces import BaseResult
 
 
 @dataclass(frozen=True, order=True, slots=True)
 class ScoreResult(BaseResult):
     """A basic score result."""
+
     score: float
 
 
 @dataclass(frozen=True, order=True, slots=True)
 class GradeResult(BaseResult):
     """A result with a score and grade levels."""
+
     score: float
     grade_levels: list[str]
 
@@ -26,12 +28,14 @@ class GradeResult(BaseResult):
 @dataclass(frozen=True, order=True, slots=True)
 class ARIResult(GradeResult):
     """A result for the Automated Readability Index."""
+
     ages: list[int]
 
 
 @dataclass(frozen=True, order=True, slots=True)
 class FleschResult(GradeResult):
     """A result for the Flesch Reading Ease score."""
+
     ease: str
 
 

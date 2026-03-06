@@ -4,6 +4,7 @@ import math
 
 from dataclasses import dataclass
 
+from readable.constants.about_metric import ARI
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import ARIResult
 
@@ -22,9 +23,7 @@ class ARI(BaseMeasure):
         """Calculate and return the score."""
         score = self._score()
         return ARIResult(
-            score=score,
-            grade_levels=self._grade_levels(score),
-            ages=self._ages(score),
+            score=score, grade_levels=self._grade_levels(score), ages=self._ages(score)
         )
 
     def _score(self) -> float:
@@ -93,9 +92,4 @@ class ARI(BaseMeasure):
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return (
-            "Uses character count and sentence length to estimate US grade level. "
-            "Unlike syllable-based metrics, it handles technical jargon more reliably "
-            "because character counting is exact where syllable counting is approximate. "
-            "Returns grade level and a corresponding age range."
-        )
+        return ARI

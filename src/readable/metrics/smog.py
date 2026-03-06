@@ -5,6 +5,7 @@ import warnings
 
 from dataclasses import dataclass, field
 
+from readable.constants.about_metric import SMOG
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import SmogResult
 
@@ -21,17 +22,16 @@ class Smog(BaseMeasure):
         """Post-initialization checks or setup."""
         if len(self.sentences) < 30:
             if not self.ignore_length:
-                raise ValueError(f"SMOG requires at least 30 sentences. {len(self.sentences)} found.")
+                raise ValueError(
+                    f"SMOG requires at least 30 sentences. {len(self.sentences)} found."
+                )
             warnings.warn(f"SMOG requires 30 sentences. {len(self.sentences)} found.", stacklevel=2)
 
     @property
     def score(self) -> SmogResult:
         """Calculate and return the score."""
         score = self._score()
-        return SmogResult(
-            score=score,
-            grade_levels=self._grade_levels(score),
-        )
+        return SmogResult(score=score, grade_levels=self._grade_levels(score))
 
     def _score(self) -> float:
         """Internal method to compute the score."""
@@ -75,6 +75,7 @@ class Smog(BaseMeasure):
 
         # We need a word tokenizer too
         from nltk.tokenize import TweetTokenizer
+
         tokenizer = TweetTokenizer()
 
         for sentence in sample_sentences:
@@ -96,9 +97,4 @@ class Smog(BaseMeasure):
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return (
-            "Counts polysyllabic words across a 30-sentence sample to estimate the grade "
-            "level needed for full comprehension of health or educational materials. "
-            "Targets 100% comprehension — scores 2-4 grade levels higher than Flesch-Kincaid "
-            "on the same text. Requires at least 30 sentences by default."
-        )
+        return SMOG

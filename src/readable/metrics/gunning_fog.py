@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 
+from readable.constants.about_metric import GUNNING_FOG
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import GunningFogResult
 
@@ -19,10 +20,7 @@ class GunningFog(BaseMeasure):
     def score(self) -> GunningFogResult:
         """Calculate and return the score."""
         score = self._score()
-        return GunningFogResult(
-            score=score,
-            grade_levels=self._grade_levels(score),
-        )
+        return GunningFogResult(score=score, grade_levels=self._grade_levels(score))
 
     def _score(self) -> float:
         """Internal method to compute the score."""
@@ -57,9 +55,4 @@ class GunningFog(BaseMeasure):
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return (
-            "Estimates years of formal education needed to understand text on first reading. "
-            "Weights sentence length and the share of words with three or more syllables. "
-            "Returns 'na' for very simple text (score below 6). "
-            "Best for general prose; not calibrated for children's text."
-        )
+        return GUNNING_FOG

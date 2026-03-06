@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 
+from readable.constants.about_metric import COLEMAN_LIAU
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import ColemanLiauResult
 
@@ -19,10 +20,7 @@ class ColemanLiau(BaseMeasure):
     def score(self) -> ColemanLiauResult:
         """Calculate and return the score."""
         score = self._score()
-        return ColemanLiauResult(
-            score=score,
-            grade_levels=self._grade_levels(score),
-        )
+        return ColemanLiauResult(score=score, grade_levels=self._grade_levels(score))
 
     def _score(self) -> float:
         """Internal method to compute the score."""
@@ -45,9 +43,4 @@ class ColemanLiau(BaseMeasure):
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return (
-            "Uses letter count and sentence length to estimate US grade level. "
-            "Like ARI, it avoids syllable counting — but counts letters only, not digits. "
-            "This makes it diverge from ARI on numeral-heavy text. "
-            "Works well for large-scale batch processing where deterministic results matter."
-        )
+        return COLEMAN_LIAU

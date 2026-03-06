@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 
+from readable.constants.about_metric import FLESCH_KINCAID
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import FleschKincaidResult
 
@@ -19,10 +20,7 @@ class FleschKincaid(BaseMeasure):
     def score(self) -> FleschKincaidResult:
         """Calculate and return the score."""
         score = self._score()
-        return FleschKincaidResult(
-            score=score,
-            grade_levels=self._grade_levels(score),
-        )
+        return FleschKincaidResult(score=score, grade_levels=self._grade_levels(score))
 
     def _score(self) -> float:
         """Internal method to compute the score."""
@@ -41,9 +39,4 @@ class FleschKincaid(BaseMeasure):
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return (
-            "Uses the same inputs as Flesch Reading Ease — sentence length and syllables "
-            "per word — but outputs a US grade level directly. Targets 75% comprehension; "
-            "scores 2-4 grade levels lower than SMOG on the same text because SMOG targets "
-            "100% comprehension."
-        )
+        return FLESCH_KINCAID

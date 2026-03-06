@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING, NamedTuple
 
 
 if TYPE_CHECKING:
-    from ._interfaces import BaseMeasure
+    from readable.types._interfaces import BaseMeasure
 
 
 class MetricNames(NamedTuple):
@@ -16,6 +16,7 @@ class MetricNames(NamedTuple):
     short: str
     full: str
     all: tuple[str, ...]
+
 
 class ReadabilityMetric(Enum):
     """Enum for readability metrics."""
@@ -38,15 +39,36 @@ class ReadabilityMetric(Enum):
     def _names(self) -> MetricNames:
         """Return the name of the readability metric."""
         return {
-            ReadabilityMetric.ARI: MetricNames(var="ari", short="ARI", full="Automated Readability Index", all=()),
-            ReadabilityMetric.COLEMAN_LIAU: MetricNames(var="coleman_liau", short="Coleman-Liau", full="Coleman-Liau Index", all=()),
-            ReadabilityMetric.DALE_CHALL: MetricNames(var="dale_chall", short="Dale-Chall", full="Dale-Chall Readability Score", all=()),
-            ReadabilityMetric.FLESCH: MetricNames(var="flesch", short="Flesch", full="Flesch Reading Ease", all=()),
-            ReadabilityMetric.FLESCH_KINCAID: MetricNames(var="flesch_kincaid", short="Flesch-Kincaid", full="Flesch-Kincaid Grade Level", all=()),
-            ReadabilityMetric.GUNNING_FOG: MetricNames(var="gunning_fog", short="Gunning Fog", full="Gunning Fog Index", all=()),
-            ReadabilityMetric.LINSEAR_WRITE: MetricNames(var="linsear_write", short="Linsear Write", full="Linsear Write Formula", all=()),
-            ReadabilityMetric.SMOG: MetricNames(var="smog", short="SMOG", full="Simple Measure of Gobbledygook Index", all=()),
-            ReadabilityMetric.SPACHE: MetricNames(var="spache", short="Spache", full="Spache Readability Formula", all=()),
+            ReadabilityMetric.ARI: MetricNames(
+                var="ari", short="ARI", full="Automated Readability Index", all=()
+            ),
+            ReadabilityMetric.COLEMAN_LIAU: MetricNames(
+                var="coleman_liau", short="Coleman-Liau", full="Coleman-Liau Index", all=()
+            ),
+            ReadabilityMetric.DALE_CHALL: MetricNames(
+                var="dale_chall", short="Dale-Chall", full="Dale-Chall Readability Score", all=()
+            ),
+            ReadabilityMetric.FLESCH: MetricNames(
+                var="flesch", short="Flesch", full="Flesch Reading Ease", all=()
+            ),
+            ReadabilityMetric.FLESCH_KINCAID: MetricNames(
+                var="flesch_kincaid",
+                short="Flesch-Kincaid",
+                full="Flesch-Kincaid Grade Level",
+                all=(),
+            ),
+            ReadabilityMetric.GUNNING_FOG: MetricNames(
+                var="gunning_fog", short="Gunning Fog", full="Gunning Fog Index", all=()
+            ),
+            ReadabilityMetric.LINSEAR_WRITE: MetricNames(
+                var="linsear_write", short="Linsear Write", full="Linsear Write Formula", all=()
+            ),
+            ReadabilityMetric.SMOG: MetricNames(
+                var="smog", short="SMOG", full="Simple Measure of Gobbledygook Index", all=()
+            ),
+            ReadabilityMetric.SPACHE: MetricNames(
+                var="spache", short="Spache", full="Spache Readability Formula", all=()
+            ),
         }[self]
 
     @property

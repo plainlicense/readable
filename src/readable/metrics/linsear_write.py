@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 
+from readable.constants.about_metric import LINSEAR_WRITE
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import LinsearWriteResult
 
@@ -19,10 +20,7 @@ class LinsearWrite(BaseMeasure):
     def score(self) -> LinsearWriteResult:
         """Calculate and return the score."""
         score = self._score()
-        return LinsearWriteResult(
-            score=score,
-            grade_levels=self._grade_levels(score),
-        )
+        return LinsearWriteResult(score=score, grade_levels=self._grade_levels(score))
 
     def _score(self) -> float:
         """Internal method to compute the score."""
@@ -47,9 +45,4 @@ class LinsearWrite(BaseMeasure):
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return (
-            "Developed by John O'Hayre for the US Bureau of Land Management (1966), later "
-            "adopted by the US Air Force. Classifies words as easy (1-2 syllables) or hard "
-            "(3+ syllables), weights them, and maps the result to a US grade level. "
-            "The grade-level conversion has limited validation and can be off by two grade levels."
-        )
+        return LINSEAR_WRITE

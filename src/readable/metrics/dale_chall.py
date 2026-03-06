@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 
+from readable.constants.about_metric import DALE_CHALL
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import DaleChallResult
 
@@ -19,18 +20,13 @@ class DaleChall(BaseMeasure):
     def score(self) -> DaleChallResult:
         """Calculate and return the score."""
         score = self._score()
-        return DaleChallResult(
-            score=score,
-            grade_levels=self._grade_levels(score),
-        )
+        return DaleChallResult(score=score, grade_levels=self._grade_levels(score))
 
     def _score(self) -> float:
         """Internal method to compute the score."""
         stats = self._stats
         words_per_sent = stats.num_words / stats.num_sentences
-        percent_difficult_words = (
-            stats.num_dale_chall_complex / stats.num_words * 100
-        )
+        percent_difficult_words = stats.num_dale_chall_complex / stats.num_words * 100
         raw_score = 0.1579 * percent_difficult_words + 0.0496 * words_per_sent
         return raw_score + 3.6365 if percent_difficult_words > 5 else raw_score
 
@@ -71,9 +67,4 @@ class DaleChall(BaseMeasure):
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return (
-            "Compares words against a list of 3,000 familiar English words, then weights "
-            "sentence length. Most accurate for text aimed at grade 4 and above. "
-            "Less reliable for technical text where common words have domain-specific meanings, "
-            "or for text with many proper nouns not on the familiar-word list."
-        )
+        return DALE_CHALL

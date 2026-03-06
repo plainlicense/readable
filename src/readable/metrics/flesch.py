@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass
 
+from readable.constants.about_metric import FLESCH
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import FleschResult
 
@@ -20,9 +21,7 @@ class Flesch(BaseMeasure):
         """Calculate and return the score."""
         score = self._score()
         return FleschResult(
-            score=score,
-            ease=self._ease(score),
-            grade_levels=self._grade_levels(score),
+            score=score, ease=self._ease(score), grade_levels=self._grade_levels(score)
         )
 
     def _score(self) -> float:
@@ -85,9 +84,4 @@ class Flesch(BaseMeasure):
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return (
-            "Scores text on a 0-100 scale using sentence length and syllables per word — "
-            "higher scores mean easier text. The most widely cited readability formula; "
-            "used in US government and legal requirements. Note: the scale runs backwards "
-            "compared to every other metric in this library."
-        )
+        return FLESCH
