@@ -1,8 +1,12 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Gunning Fog Index implementation."""
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import GUNNING_FOG
+from readable.constants.about_metric import GUNNING_FOG as _GUNNING_FOG_ABOUT
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import GunningFogResult
 
@@ -10,11 +14,6 @@ from readable.types.results import GunningFogResult
 @dataclass(frozen=True, slots=True)
 class GunningFog(BaseMeasure):
     """Gunning Fog Index."""
-
-    def __post_init__(self):
-        """Post-initialization checks or setup."""
-        if self._stats.num_words < self._min_words:
-            raise ValueError(f"{self._min_words} words required.")
 
     @property
     def score(self) -> GunningFogResult:
@@ -36,9 +35,7 @@ class GunningFog(BaseMeasure):
             return ["na"]
         if 6 <= rounded <= 12:
             return [str(rounded)]
-        if 13 <= rounded <= 16:
-            return ["college"]
-        return ["college_graduate"]
+        return ["college"] if 13 <= rounded <= 16 else ["college_graduate"]
 
     @property
     def grade_level(self) -> int:
@@ -48,11 +45,12 @@ class GunningFog(BaseMeasure):
             return 0
         if 6 <= rounded <= 12:
             return rounded
-        if 13 <= rounded <= 16:
-            return 13
-        return 14
+        return 13 if 13 <= rounded <= 16 else 14
 
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return GUNNING_FOG
+        return _GUNNING_FOG_ABOUT
+
+
+__all__ = ("GunningFog",)

@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Result types for readability measures."""
 
 from dataclasses import dataclass
@@ -72,3 +76,18 @@ class SmogResult(GradeResult):
 @dataclass(frozen=True, order=True, slots=True)
 class SpacheResult(GradeResult):
     """A result for the Spache Readability Formula."""
+
+
+__all__ = (
+    "ARIResult",
+    "ColemanLiauResult",
+    "DaleChallResult",
+    "FleschKincaidResult",
+    "FleschResult",
+    "GradeResult",
+    "GunningFogResult",
+    "LinsearWriteResult",
+    "ScoreResult",
+    "SmogResult",
+    "SpacheResult",
+)

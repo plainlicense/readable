@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 title: Coleman-Liau Index
 description: Estimates US grade level using letter count and sentence length. Designed in 1975 for optical scanners that could detect character boundaries without recognizing characters.
 ---

@@ -1,5 +1,8 @@
-"""Text tokenization utilities."""
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 
+"""Text tokenization utilities."""
 
 from nltk.tokenize import TweetTokenizer, sent_tokenize
 
@@ -34,3 +37,6 @@ class Tokenizer:
             A list of words.
         """
         return self._tweet_tokenizer.tokenize(text)
+
+
+__all__ = ("Tokenizer",)

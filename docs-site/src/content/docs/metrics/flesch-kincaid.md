@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 title: Flesch-Kincaid Grade Level
 description: Outputs a US grade level directly using sentence length and syllables per word. Developed for the US Navy in 1975 — it targets 75% comprehension, not full comprehension, and will score 2–4 grade levels lower than SMOG on the same text.
 ---

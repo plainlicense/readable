@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 PlainLicense
+
+SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+-->
+
 # Research Report: Dale-Chall, Spache, and Linsear Write Readability Formulas
 
 **Prepared for:** Readable Library Documentation

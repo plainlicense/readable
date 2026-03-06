@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Main API for the readable library."""
 
 import warnings
@@ -88,7 +92,7 @@ class Readability:
         """Calculate Linsear Write Formula."""
         return LinsearWrite(self._stats, self._min_words).score
 
-    def smog(self, all_sentences: bool = False, ignore_length: bool = False) -> SmogResult:
+    def smog(self, *, all_sentences: bool = False, ignore_length: bool = False) -> SmogResult:
         """
         Calculate SMOG Index.
 
@@ -118,3 +122,6 @@ class Readability:
             "avg_words_per_sentence": self._stats.avg_words_per_sentence,
             "avg_syllables_per_word": self._stats.avg_syllables_per_word,
         }
+
+
+__all__ = ("Readability",)

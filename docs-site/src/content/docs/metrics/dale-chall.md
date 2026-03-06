@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 title: Dale-Chall Readability Formula
 description: Checks words against a 3,000-word familiar-word list to estimate grade level for text aimed at grade 4 and above. Developed by Edgar Dale and Jeanne Chall in 1948.
 ---

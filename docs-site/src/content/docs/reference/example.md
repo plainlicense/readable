@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 title: API Reference
 description: Complete reference for the Readable public API.
 ---

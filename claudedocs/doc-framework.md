@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 PlainLicense
+
+SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+-->
+
 # Documentation Framework: Readable Metrics
 
 **Purpose**: This document defines how to write metric documentation for the Readable library. It is a working guide, not published documentation. Review and adjust this framework before writing the actual metric pages.

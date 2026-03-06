@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Example of implementing a custom readability metric."""
 
 from dataclasses import dataclass
@@ -29,10 +33,7 @@ class SimpleReadingIndex(BaseMeasure):
     def score(self) -> SimpleReadingIndexResult:
         """Calculate and return the result."""
         score = self._score()
-        return SimpleReadingIndexResult(
-            score=score,
-            grade_levels=self._grade_levels(score)
-        )
+        return SimpleReadingIndexResult(score=score, grade_levels=self._grade_levels(score))
 
     def _score(self) -> float:
         """Internal calculation."""
@@ -67,7 +68,7 @@ def main() -> None:
     """
 
     # Analyze the text
-    readability = Readability(text, min_words=20) # Lower min words for example
+    readability = Readability(text, min_words=20)  # Lower min words for example
 
     # Use our custom metric with the stats from the readability object
     custom_metric = SimpleReadingIndex(_stats=readability.stats, _min_words=20)
@@ -76,6 +77,7 @@ def main() -> None:
     print(f"Custom Score: {result.score:.2f}")
     print(f"Custom Grade Level: {result.grade_level}")
     print(f"About: {custom_metric.about}")
+
 
 if __name__ == "__main__":
     main()

@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 title: Linsear Write Formula
 description: Estimates US grade level by weighting easy and hard words over full-text statistics. Developed in 1966 by John O'Hayre for the US Bureau of Land Management as a plain-language writing tool.
 ---

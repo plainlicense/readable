@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Resource loading utilities for word lists and other static data."""
 
 from functools import cache
@@ -31,3 +35,6 @@ class ResourceLoader:
         """
         file_path = self._data_path / filename
         return _load_word_set(file_path)
+
+
+__all__ = ("ResourceLoader",)

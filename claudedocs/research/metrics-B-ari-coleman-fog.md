@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 PlainLicense
+
+SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+-->
+
 # Research Report: ARI, Coleman-Liau, and Gunning Fog Readability Metrics
 
 **Prepared for**: Readable library documentation

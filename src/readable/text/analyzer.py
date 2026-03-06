@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Main text analysis engine for readability measures."""
 
 import re
@@ -17,15 +21,19 @@ class TextAnalyzer:
         self._tokenizer = Tokenizer()
         self._resource_loader = ResourceLoader()
         self._stemmer = Stemmer()
-        self._dale_chall_set: set[str] = set()
-        self._spache_set: set[str] = set()
+        self._dale_chall_vocabulary: set[str] = set()
+        self._spache_vocabulary: set[str] = set()
         self._initialized = False
 
     def _ensure_initialized(self):
         """Load resources if not already loaded."""
         if not self._initialized:
-            self._dale_chall_set = self._resource_loader.load_word_set("dale_chall_porterstem.txt")
-            self._spache_set = self._resource_loader.load_word_set("spache_easy_porterstem.txt")
+            self._dale_chall_vocabulary = self._resource_loader.load_word_set(
+                "dale_chall_porterstem.txt"
+            )
+            self._spache_vocabulary = self._resource_loader.load_word_set(
+                "spache_easy_porterstem.txt"
+            )
             self._initialized = True
 
     def analyze(self, text: str) -> StatSummary:
@@ -96,7 +104,7 @@ class TextAnalyzer:
 
     def _is_punctuation(self, token: str) -> bool:
         """Check if a token is a punctuation mark."""
-        return re.match(r'^[.,\/#!$%\'\^&\*;:{}=\-_`~()]$', token) is not None
+        return re.match(r"^[.,\/#!$%\'\^&\*;:{}=\-_`~()]$", token) is not None
 
     def _is_gunning_complex(self, token: str, syllable_count: int) -> bool:
         """Check if a word is complex according to the Gunning Fog Index."""
@@ -115,9 +123,12 @@ class TextAnalyzer:
     def _is_dale_chall_complex(self, token: str) -> bool:
         """Check if a word is complex according to Dale-Chall."""
         stem = self._stemmer.stem(token)
-        return stem not in self._dale_chall_set
+        return stem not in self._dale_chall_vocabulary
 
     def _is_spache_complex(self, token: str) -> bool:
         """Check if a word is complex according to Spache."""
         stem = self._stemmer.stem(token)
-        return stem not in self._spache_set
+        return stem not in self._spache_vocabulary
+
+
+__all__ = ("TextAnalyzer",)

@@ -1,24 +1,41 @@
+/*
+ * SPDX-FileCopyrightText: 2026 PlainLicense
+ *
+ * SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+ */
+
 :root {
-  /* Branding Colors */
-  --brand-zaffre: 13, 25, 163;
-  --brand-emerald: 21, 219, 149;
-  --brand-dutch-white: 244, 228, 193;
-  --brand-ecru: 228, 197, 129;
 
-  /* Starlight Overrides - Accents based on Zaffre */
-  --sl-color-accent-low: hsl(235, 85%, 20%);
-  --sl-color-accent: rgb(var(--brand-zaffre));
-  --sl-color-accent-high: hsl(235, 85%, 80%);
+  /* Dark mode colors. */
+  :root {
+    --sl-color-accent-low: #002c1a;
+    --sl-color-accent: #007e53;
+    --sl-color-accent-high: #93dbb6;
+    --sl-color-white: #ffffff;
+    --sl-color-gray-1: #eaeef6;
+    --sl-color-gray-2: #c4c8d3;
+    --sl-color-gray-3: #9ba4b8;
+    --sl-color-gray-4: #50586a;
+    --sl-color-gray-5: #313849;
+    --sl-color-gray-6: #202636;
+    --sl-color-black: #151820;
+  }
 
-  /* Secondary Accents based on Emerald */
-  --sl-color-secondary-low: hsl(159, 83%, 20%);
-  --sl-color-secondary: rgb(var(--brand-emerald));
-  --sl-color-secondary-high: hsl(159, 83%, 80%);
-}
-
-:root[data-theme="light"] {
-  --sl-color-bg: rgb(var(--brand-dutch-white));
-  --sl-color-text: #000022; /* oxford-blueish */
+  /* Light mode colors. */
+  :root[data-theme='light'] {
+    --sl-color-accent-low: #b0e5c9;
+    --sl-color-accent: #005436;
+    --sl-color-accent-high: #003d26;
+    --sl-color-white: #151820;
+    --sl-color-gray-1: #202636;
+    --sl-color-gray-2: #313849;
+    --sl-color-gray-3: #50586a;
+    --sl-color-gray-4: #838b9f;
+    --sl-color-gray-5: #bdc2cd;
+    --sl-color-gray-6: #eaeef6;
+    --sl-color-gray-7: #f4f6fb;
+    --sl-color-black: #ffffff;
+  }
 }
 
 /* Custom Fonts */
@@ -51,7 +68,12 @@
   --sl-font-mono: "Source Code Pro Custom", monospace;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   --sl-font-heading: "Bangers Custom", cursive;
   letter-spacing: 0.05em;
 }

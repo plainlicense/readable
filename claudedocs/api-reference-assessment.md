@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 PlainLicense
+
+SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+-->
+
 # API Reference Documentation Assessment
 
 **Date**: 2026-03-05

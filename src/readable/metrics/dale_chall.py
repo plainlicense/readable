@@ -1,20 +1,31 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Dale-Chall Readability Score implementation."""
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import DALE_CHALL
+from readable.constants.about_metric import DALE_CHALL as _DALE_CHALL_ABOUT
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import DaleChallResult
+
+
+# (upper_bound_exclusive, grade_strings, integer_grade)
+_DALE_CHALL_RANGES: tuple[tuple[float, tuple[str, ...], int], ...] = (
+    (5.0, ("1", "2", "3", "4"), 4),
+    (6.0, ("5", "6"), 6),
+    (7.0, ("7", "8"), 8),
+    (8.0, ("9", "10"), 10),
+    (9.0, ("11", "12"), 12),
+    (10.0, ("college",), 13),
+)
+_DALE_CHALL_DEFAULT: tuple[tuple[str, ...], int] = (("college_graduate",), 14)
 
 
 @dataclass(frozen=True, slots=True)
 class DaleChall(BaseMeasure):
     """Dale-Chall Readability Score."""
-
-    def __post_init__(self):
-        """Post-initialization checks or setup."""
-        if self._stats.num_words < self._min_words:
-            raise ValueError(f"{self._min_words} words required.")
 
     @property
     def score(self) -> DaleChallResult:
@@ -32,39 +43,34 @@ class DaleChall(BaseMeasure):
 
     def _grade_levels(self, score: float) -> list[str]:
         """Internal method to calculate grade levels based on the score."""
-        if score <= 4.9:
-            return ["1", "2", "3", "4"]
-        if 5 <= score < 6:
-            return ["5", "6"]
-        if 6 <= score < 7:
-            return ["7", "8"]
-        if 7 <= score < 8:
-            return ["9", "10"]
-        if 8 <= score < 9:
-            return ["11", "12"]
-        if 9 <= score < 10:
-            return ["college"]
-        return ["college_graduate"]
+        grades, _ = next(
+            (
+                (grade, grade_level)
+                for threshold, grade, grade_level in _DALE_CHALL_RANGES
+                if score < threshold
+            ),
+            _DALE_CHALL_DEFAULT,
+        )
+        return list(grades)
 
     @property
     def grade_level(self) -> int:
         """Return the primary grade level as an integer."""
         score = self._score()
-        if score <= 4.9:
-            return 4
-        if 5 <= score < 6:
-            return 6
-        if 6 <= score < 7:
-            return 8
-        if 7 <= score < 8:
-            return 10
-        if 8 <= score < 9:
-            return 12
-        if 9 <= score < 10:
-            return 13
-        return 14
+        _, grade_level = next(
+            (
+                (grade, grade_level)
+                for threshold, grade, grade_level in _DALE_CHALL_RANGES
+                if score < threshold
+            ),
+            _DALE_CHALL_DEFAULT,
+        )
+        return grade_level
 
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return DALE_CHALL
+        return _DALE_CHALL_ABOUT
+
+
+__all__ = ("DaleChall",)

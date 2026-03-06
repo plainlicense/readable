@@ -1,22 +1,39 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Automated Readability Index (ARI) implementation."""
 
 import math
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import ARI
+from readable.constants.about_metric import ARI as _ARI_ABOUT
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import ARIResult
+
+
+_ARI_AGES: tuple[tuple[int, int], ...] = (
+    (5, 6),  # score <= 1
+    (6, 7),  # score <= 2
+    (7, 9),  # score <= 3
+    (9, 10),  # score <= 4
+    (10, 11),  # score <= 5
+    (11, 12),  # score <= 6
+    (12, 13),  # score <= 7
+    (13, 14),  # score <= 8
+    (14, 15),  # score <= 9
+    (15, 16),  # score <= 10
+    (16, 17),  # score <= 11
+    (17, 18),  # score <= 12
+    (18, 24),  # score <= 13
+    (24, 100),  # score > 13
+)
 
 
 @dataclass(frozen=True, slots=True)
 class ARI(BaseMeasure):
     """Automated Readability Index (ARI)."""
-
-    def __post_init__(self):
-        """Post-initialization checks or setup."""
-        if self._stats.num_words < self._min_words:
-            raise ValueError(f"{self._min_words} words required.")
 
     @property
     def score(self) -> ARIResult:
@@ -42,40 +59,12 @@ class ARI(BaseMeasure):
             return ["1", "2"]
         if score_ceil <= 12:
             return [str(score_ceil)]
-        if score_ceil <= 13:
-            return ["college"]
-        return ["college_graduate"]
+        return ["college"] if score_ceil <= 13 else ["college_graduate"]
 
-    def _ages(self, score: float) -> list[int]:  # ruff: noqa: C901
+    def _ages(self, score: float) -> list[int]:
         """Internal method to calculate ages based on the score."""
-        score_ceil = math.ceil(score)
-        if score_ceil <= 1:
-            return [5, 6]
-        if score_ceil <= 2:
-            return [6, 7]
-        if score_ceil <= 3:
-            return [7, 9]
-        if score_ceil <= 4:
-            return [9, 10]
-        if score_ceil <= 5:
-            return [10, 11]
-        if score_ceil <= 6:
-            return [11, 12]
-        if score_ceil <= 7:
-            return [12, 13]
-        if score_ceil <= 8:
-            return [13, 14]
-        if score_ceil <= 9:
-            return [14, 15]
-        if score_ceil <= 10:
-            return [15, 16]
-        if score_ceil <= 11:
-            return [16, 17]
-        if score_ceil <= 12:
-            return [17, 18]
-        if score_ceil <= 13:
-            return [18, 24]
-        return [24, 100]
+        idx = min(max(math.ceil(score) - 1, 0), len(_ARI_AGES) - 1)
+        return list(_ARI_AGES[idx])
 
     @property
     def grade_level(self) -> int:
@@ -85,11 +74,12 @@ class ARI(BaseMeasure):
             return 0
         if score_ceil <= 12:
             return score_ceil
-        if score_ceil <= 13:
-            return 13
-        return 14
+        return 13 if score_ceil <= 13 else 14
 
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return ARI
+        return _ARI_ABOUT
+
+
+__all__ = ("ARI",)

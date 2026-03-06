@@ -1,0 +1,35 @@
+// SPDX-FileCopyrightText: 2026 Knitli Inc.
+//
+// SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "recoco-docs",
+  "compatibility_date": "2025-01-21",
+  "main": "./dist/_worker.js/index.js",
+  "compatibility_flags": [
+    "nodejs_compat",
+    "global_fetch_strictly_public"
+  ],
+  "workers_dev": true,
+  "preview_urls": true,
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "binding": "ASSETS",
+    "directory": "./dist"
+  },
+  "routes": [
+    {
+      "pattern": "docs.plainlicense.org/readable/*",
+      "zone_name": "plainlicense.org"
+    },
+    {
+      "pattern": "readable.plainlicense.org",
+      "custom_domain": true
+    }
+  ],
+  "placement": {
+    "mode": "smart"
+  }
+}

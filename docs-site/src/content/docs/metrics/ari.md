@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 title: Automated Readability Index (ARI)
 description: Estimates US grade level and reader age range using character count and sentence length. Developed for military technical documentation in 1967, recalibrated in 1975.
 ---

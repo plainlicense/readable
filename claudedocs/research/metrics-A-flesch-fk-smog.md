@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 PlainLicense
+
+SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+-->
+
 # Research Report: Flesch Reading Ease, Flesch-Kincaid Grade Level, and SMOG Index
 
 **Prepared for:** Readable library documentation project

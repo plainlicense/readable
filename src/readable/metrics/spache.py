@@ -1,8 +1,12 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Spache Readability Formula implementation."""
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import SPACHE
+from readable.constants.about_metric import SPACHE as _SPACHE_ABOUT
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import SpacheResult
 
@@ -10,11 +14,6 @@ from readable.types.results import SpacheResult
 @dataclass(frozen=True, slots=True)
 class Spache(BaseMeasure):
     """Spache Readability Formula."""
-
-    def __post_init__(self):
-        """Post-initialization checks or setup."""
-        if self._stats.num_words < self._min_words:
-            raise ValueError(f"{self._min_words} words required.")
 
     @property
     def score(self) -> SpacheResult:
@@ -29,16 +28,10 @@ class Spache(BaseMeasure):
         percent_difficult_words = (stats.num_spache_complex / stats.num_words) * 100
         return (0.141 * avg_sentence_len) + (0.086 * percent_difficult_words) + 0.839
 
-    def _grade_levels(self, score: float) -> list[str]:
-        """Internal method to calculate grade levels based on the score."""
-        return [str(round(score))]
-
-    @property
-    def grade_level(self) -> int:
-        """Return the primary grade level as an integer."""
-        return round(self._score())
-
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return SPACHE
+        return _SPACHE_ABOUT
+
+
+__all__ = ("Spache",)

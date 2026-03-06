@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 title: SMOG Index
 description: Estimates US grade level by counting polysyllabic words across 30 sentences. Designed for 100% comprehension — it scores higher than Flesch-Kincaid on the same text by design.
 ---

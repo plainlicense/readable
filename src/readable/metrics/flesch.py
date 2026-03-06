@@ -1,20 +1,31 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Flesch Reading Ease implementation."""
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import FLESCH
+from readable.constants.about_metric import FLESCH as _FLESCH_ABOUT
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import FleschResult
+
+
+# (lower_bound_inclusive, ease_str, grade_strings, integer_grade) — sorted descending
+_FLESCH_RANGES: tuple[tuple[float, str, tuple[str, ...], int], ...] = (
+    (90.0, "very_easy", ("5",), 5),
+    (80.0, "easy", ("6",), 6),
+    (70.0, "fairly_easy", ("7",), 7),
+    (60.0, "standard", ("8", "9"), 9),
+    (50.0, "fairly_difficult", ("10", "11", "12"), 12),
+    (30.0, "difficult", ("college",), 13),
+)
+_FLESCH_DEFAULT: tuple[str, tuple[str, ...], int] = ("very_confusing", ("college_graduate",), 14)
 
 
 @dataclass(frozen=True, slots=True)
 class Flesch(BaseMeasure):
     """Flesch Reading Ease."""
-
-    def __post_init__(self):
-        """Post-initialization checks or setup."""
-        if self._stats.num_words < self._min_words:
-            raise ValueError(f"{self._min_words} words required.")
 
     @property
     def score(self) -> FleschResult:
@@ -33,55 +44,46 @@ class Flesch(BaseMeasure):
 
     def _ease(self, score: float) -> str:
         """Internal method to calculate reading ease description based on the score."""
-        if score >= 90:
-            return "very_easy"
-        if 80 <= score < 90:
-            return "easy"
-        if 70 <= score < 80:
-            return "fairly_easy"
-        if 60 <= score < 70:
-            return "standard"
-        if 50 <= score < 60:
-            return "fairly_difficult"
-        if 30 <= score < 50:
-            return "difficult"
-        return "very_confusing"
+        ease, _, _ = next(
+            (
+                (ease, grade, grade_level)
+                for threshold, ease, grade, grade_level in _FLESCH_RANGES
+                if score >= threshold
+            ),
+            _FLESCH_DEFAULT,
+        )
+        return ease
 
     def _grade_levels(self, score: float) -> list[str]:
         """Internal method to calculate grade levels based on the score."""
-        if score >= 90:
-            return ["5"]
-        if 80 <= score < 90:
-            return ["6"]
-        if 70 <= score < 80:
-            return ["7"]
-        if 60 <= score < 70:
-            return ["8", "9"]
-        if 50 <= score < 60:
-            return ["10", "11", "12"]
-        if 30 <= score < 50:
-            return ["college"]
-        return ["college_graduate"]
+        _, grades, _ = next(
+            (
+                (ease, grade, grade_level)
+                for threshold, ease, grade, grade_level in _FLESCH_RANGES
+                if score >= threshold
+            ),
+            _FLESCH_DEFAULT,
+        )
+        return list(grades)
 
     @property
     def grade_level(self) -> int:
         """Return the primary grade level as an integer."""
         score = self._score()
-        if score >= 90:
-            return 5
-        if 80 <= score < 90:
-            return 6
-        if 70 <= score < 80:
-            return 7
-        if 60 <= score < 70:
-            return 9
-        if 50 <= score < 60:
-            return 12
-        if 30 <= score < 50:
-            return 13
-        return 14
+        _, _, grade_level = next(
+            (
+                (ease, grade, grade_level)
+                for threshold, ease, grade, grade_level in _FLESCH_RANGES
+                if score >= threshold
+            ),
+            _FLESCH_DEFAULT,
+        )
+        return grade_level
 
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return FLESCH
+        return _FLESCH_ABOUT
+
+
+__all__ = ("Flesch",)

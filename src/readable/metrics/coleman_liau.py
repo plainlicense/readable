@@ -1,8 +1,12 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Coleman-Liau Index implementation."""
 
 from dataclasses import dataclass
 
-from readable.constants.about_metric import COLEMAN_LIAU
+from readable.constants.about_metric import COLEMAN_LIAU as _COLEMAN_LIAU_ABOUT
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import ColemanLiauResult
 
@@ -10,11 +14,6 @@ from readable.types.results import ColemanLiauResult
 @dataclass(frozen=True, slots=True)
 class ColemanLiau(BaseMeasure):
     """Coleman-Liau Index."""
-
-    def __post_init__(self):
-        """Post-initialization checks or setup."""
-        if self._stats.num_words < self._min_words:
-            raise ValueError(f"{self._min_words} words required.")
 
     @property
     def score(self) -> ColemanLiauResult:
@@ -31,16 +30,10 @@ class ColemanLiau(BaseMeasure):
         sentences_per_100 = (stats.num_sentences / stats.num_words) * 100
         return 0.0588 * letters_per_100 - 0.296 * sentences_per_100 - 15.8
 
-    def _grade_levels(self, score: float) -> list[str]:
-        """Internal method to calculate grade levels based on the score."""
-        return [str(round(score))]
-
-    @property
-    def grade_level(self) -> int:
-        """Return the primary grade level as an integer."""
-        return round(self._score())
-
     @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return COLEMAN_LIAU
+        return _COLEMAN_LIAU_ABOUT
+
+
+__all__ = ("ColemanLiau",)

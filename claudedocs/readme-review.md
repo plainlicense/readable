@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 PlainLicense
+
+SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+-->
+
 # README Review: Readable
 
 Reviewed against: `readable/README.md` (current HEAD on `feat_modern_refactor`)

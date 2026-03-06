@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Stemming utilities for text analysis."""
 
 from nltk.stem.porter import PorterStemmer
@@ -21,3 +25,6 @@ class Stemmer:
             The stemmed word.
         """
         return self._porter_stemmer.stem(word.lower())
+
+
+__all__ = ("Stemmer",)

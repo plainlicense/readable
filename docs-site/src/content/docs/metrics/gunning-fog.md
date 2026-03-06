@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 title: Gunning Fog Index
 description: Estimates years of formal education needed to understand text on first reading. Robert Gunning introduced it in 1952 for journalists and business writers. Scores below 6 return "na" — this is expected, not an error.
 ---

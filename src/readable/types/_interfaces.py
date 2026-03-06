@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Base classes for readability scoring system."""
 
 from abc import ABC, abstractmethod
@@ -38,9 +42,10 @@ class BaseMeasure(ABC):
     _stats: BaseStatSummary
     _min_words: int = 100
 
-    @abstractmethod
     def __post_init__(self):
-        """Post-initialization checks or setup."""
+        """Validate minimum word count. Override for metrics with different requirements."""
+        if self._stats.num_words < self._min_words:
+            raise ValueError(f"{self._min_words} words required.")
 
     @property
     @abstractmethod
@@ -51,16 +56,19 @@ class BaseMeasure(ABC):
     def _score(self) -> float:
         """Internal method to compute the score."""
 
-    @abstractmethod
     def _grade_levels(self, score: float) -> list[str]:
-        """Internal method to calculate grade levels based on the score."""
+        """Return grade levels as a rounded score string. Override for range-based mappings."""
+        return [str(round(score))]
 
     @property
-    @abstractmethod
     def grade_level(self) -> int:
-        """Return the grade level based on the score."""
+        """Return the primary grade level as an integer. Override for range-based mappings."""
+        return round(self._score())
 
     @property
     @abstractmethod
     def about(self) -> str:
         """Return a description of the measure."""
+
+
+__all__ = ("BaseMeasure", "BaseResult", "BaseStatSummary")

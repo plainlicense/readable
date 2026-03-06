@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """SMOG Index implementation."""
 
 import math
@@ -5,7 +9,7 @@ import warnings
 
 from dataclasses import dataclass, field
 
-from readable.constants.about_metric import SMOG
+from readable.constants.about_metric import SMOG as _SMOG_ABOUT
 from readable.types._interfaces import BaseMeasure
 from readable.types.results import SmogResult
 
@@ -45,10 +49,6 @@ class Smog(BaseMeasure):
             num_sentences = 30
 
         return 1.0430 * math.sqrt(30 * num_complex_words / num_sentences) + 3.1291
-
-    def _grade_levels(self, score: float) -> list[str]:
-        """Internal method to calculate grade levels based on the score."""
-        return [str(round(score))]
 
     def _smog_text_stats(self) -> dict:
         """Calculate statistics for the SMOG 30-sentence sample."""
@@ -90,11 +90,9 @@ class Smog(BaseMeasure):
         return {"num_poly_syllable_words": poly_syllable_count}
 
     @property
-    def grade_level(self) -> int:
-        """Return the primary grade level as an integer."""
-        return round(self._score())
-
-    @property
     def about(self) -> str:
         """Return a description of the measure."""
-        return SMOG
+        return _SMOG_ABOUT
+
+
+__all__ = ("Smog",)

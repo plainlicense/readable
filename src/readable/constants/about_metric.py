@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Descriptions of readability metrics."""
 
 ARI = (
@@ -61,4 +65,16 @@ SPACHE = (
     "sentence length. Implements the 1953 original formula. "
     "Designed for grades 1-3 only — results above grade 3 indicate the text is "
     "outside the formula's calibrated range."
+)
+
+__all__ = (
+    "ARI",
+    "COLEMAN_LIAU",
+    "DALE_CHALL",
+    "FLESCH",
+    "FLESCH_KINCAID",
+    "GUNNING_FOG",
+    "LINSEAR_WRITE",
+    "SMOG",
+    "SPACHE",
 )

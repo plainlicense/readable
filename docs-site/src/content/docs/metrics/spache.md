@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 title: Spache Readability Formula
 description: Estimates grade level for primary-grade text (grades 1–3) by checking words against a familiar-word list. Developed by George Spache in 1953. Not valid above grade 3.
 ---

@@ -1,6 +1,15 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 """Syllable counting utilities."""
 
 import re
+
+
+_TRAILING_E_PATTERN = re.compile(r"(?:[^laeiouy]es|[^laeiouy]e)$", re.IGNORECASE)
+_INITIAL_Y_PATTERN = re.compile(r"^y", re.IGNORECASE)
+_VOWEL_CLUSTER_PATTERN = re.compile(r"[aeiouy]{1,2}", re.IGNORECASE)
 
 
 def count_syllables(word: str) -> int:
@@ -20,9 +29,12 @@ def count_syllables(word: str) -> int:
 
     # Remove trailing 'e' or 'es' that aren't usually pronounced as a syllable
     # (unless preceded by 'l')
-    word = re.sub(r'(?:[^laeiouy]es|[^laeiouy]e)$', '', word)
+    word = _TRAILING_E_PATTERN.sub("", word)
     # Remove initial 'y' which acts as a consonant
-    word = re.sub(r'^y', '', word)
+    word = _INITIAL_Y_PATTERN.sub("", word)
     # Count vowel clusters
-    matches = re.findall(r'[aeiouy]{1,2}', word)
+    matches = _VOWEL_CLUSTER_PATTERN.findall(word)
     return len(matches)
+
+
+__all__ = ("count_syllables",)

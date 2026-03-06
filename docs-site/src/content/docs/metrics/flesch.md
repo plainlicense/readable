@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 title: Flesch Reading Ease
 description: Scores English text from 0 to 100. Higher scores mean easier reading. Learn how the formula works, when to use it, and where it falls short.
 ---

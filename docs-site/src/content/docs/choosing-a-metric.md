@@ -1,4 +1,8 @@
 ---
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+
 title: Choosing a Metric
 description: Not all readability metrics measure the same thing. This guide helps you pick the right one for your text and audience.
 ---

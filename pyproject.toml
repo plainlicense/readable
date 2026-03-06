@@ -1,11 +1,20 @@
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
 [project]
 name = "readable"
 description = "Modernized readability scoring for Python"
 readme = "README.md"
 requires-python = ">=3.12"
-license-files = ["LICENSE"]
-authors = [{ name = "Knitli Inc.", email = "hello@knit.li" }]
+license-files = ["LICENSES/*"]
+authors = [
+  { name = "PlainLicense", email = "hello@plainlicense.org" },
+  { name = "Adam Poulemanos", email = "adam@plainlicense.org" },
+  { name = "Carmine M DiMascio" }
+]
+
 classifiers = [
+  "Development Status :: 4 - Beta",
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
   "Programming Language :: Python :: 3.12",
@@ -13,33 +22,141 @@ classifiers = [
   "Programming Language :: Python :: 3.14",
 ]
 dependencies = [
+  "lateimport>=0.1.0",
   "nltk>=3.9.3",
 ]
 dynamic = ["version"]
 
 [project.urls]
-Homepage = "https://github.com/plainlicense/readable"
+Changelog = "https://github.com/plainlicense/readable/releases"
+Documentation = "https://docs.plainlicense.org/readable/"
 Issues = "https://github.com/plainlicense/readable/issues"
+Repository = "https://github.com/plainlicense/readable"
 
 [dependency-groups]
 dev = [
   "pytest>=9.0.2",
   "pytest-cov>=7.0.0",
-  "ruff>=0.11.13",
-  "ty>=0.0.1",
-  "uv-dynamic-versioning>=0.1.0",
+  "ruff>=0.15.5",
+  "ty>=0.0.21",
+  "uv-dynamic-versioning>=0.13.0",
 ]
 
 [build-system]
 requires = ["hatchling", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
-[tool.hatch.version]
-source = "uv-dynamic-versioning"
+[tool.coverage.run]
+omit = [
+  "src/**/__init__.py",
+  "src/readable/resources/data/*",
+  "src/readable/constants/*"
+]
+
+[tool.hatch.build.hooks.version]
+additionalProperties = true
+path = "src/readable/__about__.py"
+# REUSE-IgnoreStart
+template = '''
+
+# SPDX-FileCopyrightText: 2026 PlainLicense
+#
+# SPDX-License-Identifier: LicenseRef-PlainMIT OR MIT
+"""About file for the readable."""
+from typing import Final
+
+__version__: Final[str] = "{version}"
+__author__: Final[str] = "Adam Poulemanos for PlainLicense, and Carmine M DiMascio (original pyreadability-metrics author)"
+__license__: Final[str] = "LicenseRef-PlainMIT OR MIT"
+
+__all__ = ("__version__", "__author__", "__license__")
+
+'''
+# REUSE-IgnoreEnd
 
 [tool.hatch.build.targets.wheel]
 packages = ["src"]
 
+[tool.hatch.build.targets.sdist]
+include = ["src/**", "LICENSES", "README.md"]
+
+[tool.hatch.version]
+source = "uv-dynamic-versioning"
+
+[tool.pytest]
+addopts = ["--import-mode=importlib", "--strict-markers"]
+filterwarnings = [
+  "error",
+  "ignore::UserWarning:.*nltk.*",
+]
+minversion = "9.0.0"
+python_classes = ["Test*"]
+python_files = ["*_test.py", "test_*.py"]
+python_functions = ["test_*"]
+pythonpath = ["src"]
+testpaths = ["./tests"]
+
+[tool.ty.environment]
+python-version = "3.12"
+root = ["./src", "./tests"]
+python = "./.venv"
+
+[tool.ty.rules]
+possibly-missing-attribute = "ignore"  # Pytest fixtures don't have static attributes
+unresolved-attribute = "warn"  # Test mocks may have dynamic attributes
+unknown-argument = "warn"  # Pytest fixtures injected dynamically
+unresolved-reference = "warn"  # Test references may be dynamic
+# === Type Inference Limitations ===
+# ty is overly strict with Literal inference in dict lookups and dynamic patterns
+invalid-argument-type = "warn"  # Many false positives in capabilities dicts and code gen
+missing-typed-dict-key = "warn"  # Often false positive with dynamic TypedDict construction (e.g., **dict comprehension)
+# === Style and Refactoring Suggestions ===
+redundant-cast = "ignore"  # Informational only, not bugs
+# === Optional Dependencies ===
+# Scripts may import optional dependencies (e.g., mkdocs_gen_files, black)
+unresolved-import = "warn"  # Downgrade to warn for optional dependencies
+
+# Tests: May use pytest fixtures, mocks, and test-specific patterns
+# Also may not have test dependencies installed when running ty in dev environment
+# Tests can be less exact per the project requirements - focus on src/ strictness
+[[tool.ty.overrides]]
+include = ["tests/**/*.py"]
+
+[tool.ty.overrides.rules]
+unresolved-import = "ignore"  # pytest and other test dependencies may not be installed
+unknown-argument = "ignore"  # pytest fixtures inject arguments dynamically
+unresolved-reference = "ignore"  # test fixtures and dynamic test patterns
+unresolved-attribute = "ignore"  # mocks and fixtures have dynamic attributes
+not-subscriptable = "ignore"  # Often false positive after pytest assertions
+unsupported-operator = "warn"  # Type narrowing after assertions not always understood
+missing-argument = "warn"  # Dynamic test patterns and fixtures
+too-many-positional-arguments = "warn"  # Dynamic function calls in tests
+invalid-assignment = "ignore"  # Test setup patterns
+invalid-argument-type = "ignore"  # Test mocks and fixtures may have dynamic types
+
+[[tool.ty.overrides]]
+# All __init__.py files' lazy import patterns cause false positives
+include = [
+  "src/readable/__init__.py",
+  "src/readable/**/__init__.py",
+  "src/readable/*/__init__.py",
+  "src/readable/*/*/__init__.py",
+  "src/readable/*/*/*/__init__.py",
+  "src/readable/*/*/*/*/__init__.py",
+]
+
+[tool.ty.overrides.rules]
+invalid-assignment = "ignore"
+invalid-argument-type = "ignore"
+unresolved-attribute = "ignore"
+
 [tool.uv]
 managed = true
 package = true
+
+[tool.uv-dynamic-versioning]
+vcs = "git"
+style = "pep440"
+fallback-version = "0.1.0"
+dirty = false
+commit-prefix = "g"
