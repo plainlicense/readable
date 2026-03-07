@@ -32,7 +32,7 @@ syllables or characters.
 - You are assessing **government documents or public information** materials intended for
   general adult comprehension.
 - You need to check text aimed at **grade 4 and above**. For younger readers (grades 1–3),
-  use [Spache](/readscore/metrics/spache/) instead.
+  use [Spache](/metrics/spache/) instead.
 
 ## How It Works
 
@@ -124,7 +124,7 @@ interfaces, and technical writing aimed at non-specialist audiences.
 
 - **Not appropriate for grades 1–3.** The formula's lowest score band covers grades 1–4
   as a single undifferentiated range. It cannot distinguish between a text appropriate for
-  grade 1 and one appropriate for grade 4. Use [Spache](/readscore/metrics/spache/) for
+  grade 1 and one appropriate for grade 4. Use [Spache](/metrics/spache/) for
   primary-grade text.
 
 - **The word list reflects 1984 American English.** The 1995 revision was calibrated on
@@ -174,7 +174,7 @@ print(f"Primary grade: {result.grade_level}")  # '5'
 
 ## See Also
 
-- [Spache Readability Formula](/readscore/metrics/spache/) — same word-list approach,
+- [Spache Readability Formula](/metrics/spache/) — same word-list approach,
   designed for grades 1–3
-- [Choosing a Metric](/readscore/choosing-a-metric/) — decision guide for all nine metrics,
+- [Choosing a Metric](/choosing-a-metric/) — decision guide for all nine metrics,
   including when to choose Dale-Chall over syllable-counting formulas

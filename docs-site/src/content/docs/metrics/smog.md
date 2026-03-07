@@ -115,7 +115,7 @@ SMOG scores on fewer than 30 sentences are statistically unreliable.
 
 - **30-sentence minimum is a hard constraint for reliable results.** Short documents,
   executive summaries, and web copy rarely have 30 sentences. For shorter texts, use
-  [Flesch-Kincaid](/readscore/metrics/flesch-kincaid/) or [ARI](/readscore/metrics/ari/).
+  [Flesch-Kincaid](/metrics/flesch-kincaid/) or [ARI](/metrics/ari/).
 - **SMOG scores higher than other metrics by design — this surprises users.** A text
   that scores grade 8 on Flesch-Kincaid may score grade 11–12 on SMOG. Neither score
   is wrong; they measure different things (75% vs. 100% comprehension).
@@ -164,9 +164,9 @@ print(f"Grade: {result.grade_levels}")   # ['9']
 
 ## See Also
 
-- [Flesch-Kincaid Grade Level](/readscore/metrics/flesch-kincaid/) — targets 75%
+- [Flesch-Kincaid Grade Level](/metrics/flesch-kincaid/) — targets 75%
   comprehension; scores lower than SMOG on the same text
-- [Gunning Fog](/readscore/metrics/gunning-fog/) — also counts polysyllabic words but
+- [Gunning Fog](/metrics/gunning-fog/) — also counts polysyllabic words but
   uses a different sample and weighting scheme
-- [Choosing a Metric](/readscore/choosing-a-metric/) — includes an explanation of why
+- [Choosing a Metric](/choosing-a-metric/) — includes an explanation of why
   SMOG and Flesch-Kincaid scores are not directly comparable

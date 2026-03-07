@@ -28,7 +28,7 @@ Flesch-Kincaid targets **75% comprehension**. SMOG targets **100% comprehension*
 - You need a grade level output that non-technical stakeholders can act on immediately. "Grade 8" is more actionable than a 0–100 score. This was the main reason the Navy commissioned the formula — Flesch Reading Ease required a lookup table, and the Navy wanted a number that was directly interpretable.
 - You must meet a compliance requirement. The US Army adopted Flesch-Kincaid for technical publications in 1978. The IRS, Social Security Administration, and many state insurance codes specify Flesch-Kincaid grade level limits.
 - You are screening general-purpose prose — news articles, government web content, business writing — for gross readability problems.
-- You want a grade level from the same inputs as Flesch Reading Ease. Use [Flesch Reading Ease](/readscore/metrics/flesch/) if you want a 0–100 ease score from the same formula.
+- You want a grade level from the same inputs as Flesch Reading Ease. Use [Flesch Reading Ease](/metrics/flesch/) if you want a 0–100 ease score from the same formula.
 
 ## How It Works
 
@@ -115,6 +115,6 @@ print(f"Grade: {result.grade_levels}")    # ['10']
 
 ## See Also
 
-- [Flesch Reading Ease](/readscore/metrics/flesch/) — same inputs, outputs a 0–100 ease score instead of a grade level
-- [SMOG Index](/readscore/metrics/smog/) — targets 100% comprehension; scores 2–4 grade levels higher than Flesch-Kincaid on the same text
-- [Choosing a Metric](/readscore/choosing-a-metric/) — decision guide for all nine metrics
+- [Flesch Reading Ease](/metrics/flesch/) — same inputs, outputs a 0–100 ease score instead of a grade level
+- [SMOG Index](/metrics/smog/) — targets 100% comprehension; scores 2–4 grade levels higher than Flesch-Kincaid on the same text
+- [Choosing a Metric](/choosing-a-metric/) — decision guide for all nine metrics

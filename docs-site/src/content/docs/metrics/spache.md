@@ -25,7 +25,7 @@ for texts intended for beginning readers in grades 1–3.
 Spache was designed and calibrated on primary-grade texts. The formula will compute a score
 for any text, but scores above grade 3 mean the text is outside the formula's valid range.
 If `spache()` returns a grade above 3, the result is not a reliable estimate. Use
-[Dale-Chall](/readscore/metrics/dale-chall/) for text above grade 3.
+[Dale-Chall](/metrics/dale-chall/) for text above grade 3.
 :::
 
 ## When to Use This Metric
@@ -37,7 +37,7 @@ If `spache()` returns a grade above 3, the result is not a reliable estimate. Us
   matching text complexity to developing reader ability is a deliberate instructional goal.
 - You want to check whether a **children's health or safety document** is appropriate for
   early readers.
-- You are using Spache alongside [Dale-Chall](/readscore/metrics/dale-chall/) to assess
+- You are using Spache alongside [Dale-Chall](/metrics/dale-chall/) to assess
   text at the grade 4 boundary. At that level, running both gives you a fuller picture.
 
 ## How It Works
@@ -93,7 +93,7 @@ is grades 1 through 3. Scores above 3 are outside that range.
 
 If you receive a score of 4 or above, treat it as a signal that the text is too complex
 for the formula's intended population — not as a meaningful grade estimate. Run
-[Dale-Chall](/readscore/metrics/dale-chall/) instead.
+[Dale-Chall](/metrics/dale-chall/) instead.
 
 ## Return Values
 
@@ -173,7 +173,7 @@ with a text for second-grade readers.
 
 ## See Also
 
-- [Dale-Chall Readability Formula](/readscore/metrics/dale-chall/) — same word-list
+- [Dale-Chall Readability Formula](/metrics/dale-chall/) — same word-list
   approach, designed for grade 4 and above
-- [Choosing a Metric](/readscore/choosing-a-metric/) — decision guide for all nine metrics,
+- [Choosing a Metric](/choosing-a-metric/) — decision guide for all nine metrics,
   including the Spache/Dale-Chall handoff at grade 4

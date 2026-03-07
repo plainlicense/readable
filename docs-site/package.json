@@ -23,12 +23,12 @@
   "scripts": {
     "astro": "bunx astro",
     "build": "bunx astro build",
-    "deploy": "bunx wrangler deploy",
+    "deploy": "cp public/.assetignore dist/ && bunx wrangler deploy",
     "dev": "bunx astro dev",
     "postinstall": "node patches/apply.mjs",
     "preview": "bunx astro preview",
     "start": "bunx astro dev"
   },
   "type": "module",
-  "version": "0.0.1"
+  "version": "0.1.0"
 }

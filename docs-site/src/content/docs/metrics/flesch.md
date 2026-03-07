@@ -38,7 +38,7 @@ grade level. New users get this backwards almost every time.
   insurance policies. The US Department of Defense uses Flesch scores for its documents
   and forms.
 - You want a quick reading ease check without needing a precise grade level. Use
-  [Flesch-Kincaid](/readscore/metrics/flesch-kincaid/) if you need a US grade level
+  [Flesch-Kincaid](/metrics/flesch-kincaid/) if you need a US grade level
   from the same formula.
 
 ## How It Works
@@ -126,8 +126,8 @@ print(f"Grades: {result.grade_levels}")   # ['7']
 
 ## See Also
 
-- [Flesch-Kincaid Grade Level](/readscore/metrics/flesch-kincaid/) — same inputs, outputs
+- [Flesch-Kincaid Grade Level](/metrics/flesch-kincaid/) — same inputs, outputs
   a US grade level directly instead of an ease score
-- [Gunning Fog](/readscore/metrics/gunning-fog/) — also uses sentence length and word
+- [Gunning Fog](/metrics/gunning-fog/) — also uses sentence length and word
   complexity, but counts polysyllabic words rather than average syllables per word
-- [Choosing a Metric](/readscore/choosing-a-metric/) — decision guide for all nine metrics
+- [Choosing a Metric](/choosing-a-metric/) — decision guide for all nine metrics

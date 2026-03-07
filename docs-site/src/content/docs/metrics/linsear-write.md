@@ -28,13 +28,13 @@ on syllable count, then calculates a grade level from the ratio of hard words to
   this context — bureaucratic writing that uses long, technical words when shorter ones
   would work.
 - You want a fast check on jargon density without needing a word-familiarity list. Unlike
-  [Dale-Chall](/readscore/metrics/dale-chall/) and [Spache](/readscore/metrics/spache/), Linsear
+  [Dale-Chall](/metrics/dale-chall/) and [Spache](/metrics/spache/), Linsear
   Write uses no word list. It treats all 3+ syllable words as hard, regardless of domain.
 - You are comparing two drafts of a technical document against each other. Linsear Write
   is consistent within a domain, which makes it useful for relative comparisons
   even when the absolute grade level is approximate.
 - You want a secondary check to validate results from another metric. Use it alongside
-  [ARI](/readscore/metrics/ari/) or [Flesch-Kincaid](/readscore/metrics/flesch-kincaid/) rather
+  [ARI](/metrics/ari/) or [Flesch-Kincaid](/metrics/flesch-kincaid/) rather
   than as the sole measure for important decisions.
 
 ## How It Works
@@ -124,7 +124,7 @@ formula requires a 100-word sample to operate as designed.
 - **Syllable count treats all polysyllabic words the same.** "Beautiful" (three syllables)
   and "perpendicular" (five syllables) both count as hard words, even though most readers
   find "beautiful" easy. Linsear Write cannot distinguish between common long words and
-  rare technical terms. [Dale-Chall](/readscore/metrics/dale-chall/) handles this better for
+  rare technical terms. [Dale-Chall](/metrics/dale-chall/) handles this better for
   general-audience texts.
 - **Not designed as a comprehension predictor.** O'Hayre built this formula to change writer
   behavior, not to measure reader comprehension. Using it to guarantee that readers of a
@@ -166,7 +166,7 @@ for revision.
 
 ## See Also
 
-- [ARI](/readscore/metrics/ari/) — also developed for technical government documents; uses
+- [ARI](/metrics/ari/) — also developed for technical government documents; uses
   character count instead of syllable count and is better validated for grade-level prediction
-- [Choosing a Metric](/readscore/choosing-a-metric/) — decision guide for all nine metrics,
+- [Choosing a Metric](/choosing-a-metric/) — decision guide for all nine metrics,
   including when to combine Linsear Write with other formulas

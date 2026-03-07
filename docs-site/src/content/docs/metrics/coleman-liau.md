@@ -109,7 +109,7 @@ financial figures, code — they can diverge by a grade level or more.
 If your content is digit-heavy, run both and check whether they agree. Agreement suggests
 the score reflects prose complexity. Significant divergence suggests numerals are distorting
 one or both scores. In that case, a syllable-based formula like
-[Flesch-Kincaid](/readscore/metrics/flesch-kincaid/) may be more appropriate.
+[Flesch-Kincaid](/metrics/flesch-kincaid/) may be more appropriate.
 :::
 
 ## Limitations
@@ -152,8 +152,8 @@ print(f"Grade: {result.grade_levels}")      # ['13']
 
 ## See Also
 
-- [ARI](/readscore/metrics/ari/) — same character-based approach, but counts digits too;
+- [ARI](/metrics/ari/) — same character-based approach, but counts digits too;
   includes a reader age range in the result
-- [Flesch-Kincaid Grade Level](/readscore/metrics/flesch-kincaid/) — uses syllables instead
+- [Flesch-Kincaid Grade Level](/metrics/flesch-kincaid/) — uses syllables instead
   of characters; better for content where word familiarity matters more than word length
-- [Choosing a Metric](/readscore/choosing-a-metric/) — decision guide for all nine metrics
+- [Choosing a Metric](/choosing-a-metric/) — decision guide for all nine metrics

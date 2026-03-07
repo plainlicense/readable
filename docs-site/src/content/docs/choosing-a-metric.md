@@ -19,16 +19,16 @@ Find your situation in the left column. The right column tells you which metric 
 
 | My text is... | Use this metric |
 |---------------|-----------------|
-| For young readers (grades 1–3) | [Spache](/readscore/metrics/spache/) |
-| For children (grades 4+) | [Dale-Chall](/readscore/metrics/dale-chall/) |
-| For a general adult audience | [Flesch Reading Ease](/readscore/metrics/flesch/) |
-| For health communications or patient materials | [SMOG](/readscore/metrics/smog/) |
-| For technical documentation or manuals | [ARI](/readscore/metrics/ari/) |
-| For military or government documents | [ARI](/readscore/metrics/ari/) or [Linsear Write](/readscore/metrics/linsear-write/) |
-| I need a US grade level number directly | [Flesch-Kincaid](/readscore/metrics/flesch-kincaid/) |
-| I need the most widely recognized single metric | [Flesch Reading Ease](/readscore/metrics/flesch/) |
-| My text has fewer than 30 sentences | Anything except [SMOG](/readscore/metrics/smog/) |
-| I want to avoid syllable counting | [ARI](/readscore/metrics/ari/) or [Coleman-Liau](/readscore/metrics/coleman-liau/) |
+| For young readers (grades 1–3) | [Spache](/metrics/spache/) |
+| For children (grades 4+) | [Dale-Chall](/metrics/dale-chall/) |
+| For a general adult audience | [Flesch Reading Ease](/metrics/flesch/) |
+| For health communications or patient materials | [SMOG](/metrics/smog/) |
+| For technical documentation or manuals | [ARI](/metrics/ari/) |
+| For military or government documents | [ARI](/metrics/ari/) or [Linsear Write](/metrics/linsear-write/) |
+| I need a US grade level number directly | [Flesch-Kincaid](/metrics/flesch-kincaid/) |
+| I need the most widely recognized single metric | [Flesch Reading Ease](/metrics/flesch/) |
+| My text has fewer than 30 sentences | Anything except [SMOG](/metrics/smog/) |
+| I want to avoid syllable counting | [ARI](/metrics/ari/) or [Coleman-Liau](/metrics/coleman-liau/) |
 
 ## SMOG and Flesch-Kincaid Are Not Comparable
 
@@ -54,15 +54,15 @@ The inputs a metric uses tell you a lot about what it can and cannot detect.
 
 | Metric | Sentence length | Syllables per word | Character count | Word list |
 |--------|:-:|:-:|:-:|:-:|
-| [Flesch Reading Ease](/readscore/metrics/flesch/) | Yes | Average | — | — |
-| [Flesch-Kincaid](/readscore/metrics/flesch-kincaid/) | Yes | Average | — | — |
-| [Gunning Fog](/readscore/metrics/gunning-fog/) | Yes | Count (3+) | — | — |
-| [SMOG](/readscore/metrics/smog/) | — | Count (3+) | — | — |
-| [ARI](/readscore/metrics/ari/) | Yes | — | Letters + digits | — |
-| [Coleman-Liau](/readscore/metrics/coleman-liau/) | Yes | — | Letters only | — |
-| [Dale-Chall](/readscore/metrics/dale-chall/) | Yes | — | — | 3,000 familiar words |
-| [Spache](/readscore/metrics/spache/) | Yes | — | — | Primary-grade word list |
-| [Linsear Write](/readscore/metrics/linsear-write/) | Yes | Weighted | — | — |
+| [Flesch Reading Ease](/metrics/flesch/) | Yes | Average | — | — |
+| [Flesch-Kincaid](/metrics/flesch-kincaid/) | Yes | Average | — | — |
+| [Gunning Fog](/metrics/gunning-fog/) | Yes | Count (3+) | — | — |
+| [SMOG](/metrics/smog/) | — | Count (3+) | — | — |
+| [ARI](/metrics/ari/) | Yes | — | Letters + digits | — |
+| [Coleman-Liau](/metrics/coleman-liau/) | Yes | — | Letters only | — |
+| [Dale-Chall](/metrics/dale-chall/) | Yes | — | — | 3,000 familiar words |
+| [Spache](/metrics/spache/) | Yes | — | — | Primary-grade word list |
+| [Linsear Write](/metrics/linsear-write/) | Yes | Weighted | — | — |
 
 **Character-based metrics (ARI, Coleman-Liau)** count letters instead of syllables.
 This makes them fully deterministic — two systems always agree — and better at handling
