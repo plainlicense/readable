@@ -15,8 +15,8 @@ import starlightScrollToTop from 'starlight-scroll-to-top';
 
 // https://astro.build/config
 export default defineConfig({
-	site: 'https://docs.plainlicense.org',
-	base: '/readscore',
+	site: 'https://readscore.plainlicense.org',
+	base: '/',
 	adapter: cloudflareAdapter({
 		imageService: 'compile',
 		// @ts-ignore

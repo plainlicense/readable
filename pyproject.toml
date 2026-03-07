@@ -31,7 +31,7 @@ dynamic = ["version"]
 
 [project.urls]
 Changelog = "https://github.com/plainlicense/readscore/releases"
-Documentation = "https://docs.plainlicense.org/readscore/"
+Documentation = "https://readscore.plainlicense.org/"
 Issues = "https://github.com/plainlicense/readscore/issues"
 Repository = "https://github.com/plainlicense/readscore"
 

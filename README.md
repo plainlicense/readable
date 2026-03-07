@@ -65,7 +65,7 @@ print(stats)
 print(r.stats)
 ```
 
-For score interpretation, metric selection, and full API docs, see **[docs.plainlicense.org/readscore](https://docs.plainlicense.org/readscore/)**.
+For score interpretation, metric selection, and full API docs, see **[readscore.plainlicense.org](https://readscore.plainlicense.org/)**.
 
 ## About
 

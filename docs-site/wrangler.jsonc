@@ -21,10 +21,6 @@
   },
   "routes": [
     {
-      "pattern": "docs.plainlicense.org/readscore/*",
-      "zone_name": "plainlicense.org"
-    },
-    {
       "pattern": "readscore.plainlicense.org",
       "custom_domain": true
     }

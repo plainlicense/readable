@@ -76,7 +76,7 @@ A user who runs the quick-start and gets `52.4` from `flesch().score` has no con
 
 ### 6. No link to the docs site
 
-The docs site exists at `https://docs.plainlicense.org/readscore/` and contains substantial content: nine per-metric pages, a metric selector guide, an extending guide, and an architecture reference. The README has no mention of it and no link to it. A user who installs the package from PyPI or finds the GitHub repo has no path to this documentation.
+The docs site exists at `https://readscore.plainlicense.org/` and contains substantial content: nine per-metric pages, a metric selector guide, an extending guide, and an architecture reference. The README has no mention of it and no link to it. A user who installs the package from PyPI or finds the GitHub repo has no path to this documentation.
 
 ---
 
@@ -159,14 +159,14 @@ Requires Python 3.12 or later.
 
 ### Priority 4 — Add a docs site link
 
-**What:** Add a "Documentation" section or a badge linking to `https://docs.plainlicense.org/readscore/`.
+**What:** Add a "Documentation" section or a badge linking to `https://readscore.plainlicense.org/`.
 
 **Why:** The docs site has the information users actually need after the quick-start: score interpretation tables, metric selection guidance, an extending guide, and architecture notes. Without a link, the docs site is invisible to anyone who finds the package on PyPI or GitHub.
 
 **Example:** Place this near the top, between the badges and the Installation section:
 
 ```markdown
-**[Full documentation at docs.plainlicense.org/readscore](https://docs.plainlicense.org/readscore/)**
+**[Full documentation at readscore.plainlicense.org](https://readscore.plainlicense.org/)**
 ```
 
 Or add a docs badge next to the existing MIT badge.
@@ -183,7 +183,7 @@ Or add a docs badge next to the existing MIT badge.
 ```markdown
 Flesch scores run from 0 to 100 — higher means easier. A score of 52 falls in the
 "fairly difficult" range (grades 10–12). Grade-level metrics like `flesch_kincaid()`
-and `ari()` return US grade numbers directly. See the [score interpretation tables](https://docs.plainlicense.org/readscore/choosing-a-metric/) for all metrics.
+and `ari()` return US grade numbers directly. See the [score interpretation tables](https://readscore.plainlicense.org/choosing-a-metric/) for all metrics.
 ```
 
 ---
