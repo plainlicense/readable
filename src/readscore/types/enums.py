@@ -179,7 +179,7 @@ class ReadabilityMetric(Metric, Enum):
             raise FrozenInstanceError(f"cannot assign to field {name!r}")
         object.__setattr__(self, name, value)
 
-    def __new__(cls, value: Metric) -> ReadabilityMetric:
+    def __new__(cls, value: Metric) -> Self:
         """Create a new ReadabilityMetric enum member."""
         obj = object.__new__(cls)
         object.__setattr__(obj, "_value_", value)
@@ -214,9 +214,7 @@ class ReadabilityMetric(Metric, Enum):
     def measure_class(self) -> type[BaseMeasure]:
         """Return the measure class for this metric."""
         entry = _classes[self.name]
-        if isinstance(entry, LateImport):
-            return entry._resolve()
-        return entry
+        return entry._resolve() if isinstance(entry, LateImport) else entry
 
     @classmethod
     def from_name(cls, name: str) -> ReadabilityMetric:
